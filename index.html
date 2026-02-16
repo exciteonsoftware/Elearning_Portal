@@ -1,180 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyhoney Academy - Astrology Learning Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --cream: #f5f1ed; --warm-white: #faf8f6; --gold: #c4a574; --gold-dark: #9d7d4f; --dark-text: #5c4a3a; --medium-text: #6b5d52; }
-        body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--dark-text); overflow-x: hidden; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-        
-        /* Header */
-        header { background: var(--warm-white); padding: 15px 0; box-shadow: 0 2px 20px rgba(74,63,53,0.05); position: sticky; top: 0; z-index: 100; }
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--dark-text); text-decoration: none; z-index: 102; }
-        .logo-icon { width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        
-        /* Hamburger */
-        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 102; }
-        .hamburger span { width: 25px; height: 3px; background: var(--dark-text); border-radius: 3px; transition: all 0.3s; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(7px,7px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px,-7px); }
-        
-        /* Navigation */
-        .nav-links { display: flex; gap: 35px; align-items: center; list-style: none; }
-        .nav-links a { color: var(--medium-text); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--gold-dark); }
-        
-        /* Hero */
-        .hero { padding: 60px 0; background: var(--warm-white); }
-        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .hero-text h1 { font-family: 'Crimson Text',serif; font-size: 48px; margin-bottom: 20px; color: var(--dark-text); line-height: 1.2; }
-        .hero-text p { font-size: 18px; color: var(--medium-text); margin-bottom: 30px; line-height: 1.7; }
-        .hero-buttons { display: flex; gap: 15px; }
-        .btn { padding: 15px 35px; background: var(--gold); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block; transition: all 0.3s; }
-        .btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
-        .btn-secondary { background: white; color: var(--dark-text); border: 2px solid var(--gold); }
-        .hero-illustration { width: 100%; height: 400px; background: linear-gradient(135deg,#d4b994,var(--gold)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 120px; box-shadow: 0 20px 60px rgba(196,165,116,0.3); }
-        
-        /* Sections */
-        .section { padding: 80px 0; }
-        .section-title { font-family: 'Crimson Text',serif; font-size: 42px; text-align: center; margin-bottom: 50px; color: var(--dark-text); }
-        .cards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
-        .card { background: white; padding: 40px 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(74,63,53,0.08); transition: transform 0.3s; text-align: center; }
-        .card:hover { transform: translateY(-10px); }
-        .card-icon { width: 80px; height: 80px; background: linear-gradient(135deg,#d4b994,var(--gold)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 25px; }
-        .card h3 { font-family: 'Crimson Text',serif; font-size: 26px; margin-bottom: 15px; color: var(--dark-text); }
-        .card p { font-size: 15px; color: var(--medium-text); line-height: 1.6; }
-        
-        /* Footer */
-        footer { background: var(--dark-text); color: white; padding: 40px 0; text-align: center; }
-        
-        /* MOBILE RESPONSIVE */
-        @media (max-width: 968px) {
-            .container { padding: 0 20px !important; }
-            .hamburger { display: flex; }
-            .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--warm-white); flex-direction: column; padding: 100px 30px 30px; gap: 0; box-shadow: -5px 0 20px rgba(0,0,0,0.15); transition: right 0.3s; z-index: 101; overflow-y: auto; }
-            .nav-links.active { right: 0; }
-            .nav-links li { width: 100%; border-bottom: 1px solid rgba(196,165,116,0.2); }
-            .nav-links a { padding: 18px 0; font-size: 16px; display: block; }
-            .hero { padding: 40px 0; }
-            .hero-content { grid-template-columns: 1fr; gap: 30px; }
-            .hero-text h1 { font-size: 32px; }
-            .hero-text p { font-size: 16px; }
-            .hero-buttons { flex-direction: column; }
-            .btn { width: 100%; text-align: center; }
-            .hero-illustration { height: 300px; font-size: 80px; }
-            .section { padding: 50px 0; }
-            .section-title { font-size: 32px; }
-            .cards-grid { grid-template-columns: 1fr; gap: 20px; }
-        }
-        @media (max-width: 480px) {
-            .logo { font-size: 18px; }
-            .logo-icon { width: 35px; height: 35px; }
-            .hero-text h1 { font-size: 28px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyhoney Academy - Learn Astrology Step-by-Step</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ========= BASE ========= */
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+--cream:#f5f1ed;
+--warm-white:#faf8f6;
+--gold:#c4a574;
+--gold-dark:#9d7d4f;
+--dark-text:#5c4a3a;
+--medium-text:#6b5d52;
+--light-text:#8a7b6f;
+}
+
+body{
+font-family:Lato,sans-serif;
+background:var(--cream);
+color:var(--dark-text);
+line-height:1.6;
+overflow-x:hidden;
+}
+
+.container{max-width:1200px;margin:auto;padding:0 20px}
+
+/* HEADER */
+header{background:var(--warm-white);padding:15px 0;box-shadow:0 2px 20px rgba(0,0,0,.05);position:sticky;top:0;z-index:99}
+nav.container{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;gap:12px;font-size:22px;font-weight:700;text-decoration:none;color:var(--dark-text)}
+.logo-icon{width:40px;height:40px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+.nav-links{display:flex;gap:25px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--medium-text)}
+
+.cart-icon{position:relative}
+.cart-badge{position:absolute;top:-6px;right:-10px;background:var(--gold);color:white;border-radius:50%;font-size:11px;padding:2px 6px}
+
+/* HERO */
+.hero{background:var(--warm-white);padding:40px 0}
+.hero-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero-text h1{font-family:"Crimson Text",serif;font-size:48px;margin-bottom:15px}
+.hero-buttons{display:flex;gap:15px}
+
+.btn{padding:12px 26px;border-radius:8px;font-weight:600;text-decoration:none}
+.btn-primary{background:var(--gold);color:white}
+.btn-secondary{border:2px solid #ddd;color:var(--medium-text)}
+
+.hero-illustration{display:flex;justify-content:center}
+.astrology-chart{width:350px;height:350px}
+
+/* SECTIONS */
+.section-title{font-family:"Crimson Text",serif;font-size:36px;margin-bottom:25px}
+
+.path-cards,.course-grid,.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+
+.path-card,.course-card,.testimonial-card{
+background:white;padding:25px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.08)
+}
+
+.course-content{padding:20px}
+
+/* FOOTER */
+.footer-content{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px}
+.social-icons{display:flex;gap:10px}
+
+/* ========= MOBILE ========= */
+
+@media(max-width:968px){
+
+.hero-content,
+.path-cards,
+.course-grid,
+.testimonials-grid,
+.footer-content{
+grid-template-columns:1fr;
+}
+
+nav.container{
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
+}
+
+.nav-links{
+flex-wrap:wrap;
+justify-content:center;
+width:100%;
+}
+
+.hero-text h1{text-align:center;font-size:32px}
+.hero-buttons{justify-content:center;flex-wrap:wrap}
+
+.astrology-chart{width:240px;height:240px}
+}
+
+svg{max-width:100%}
+</style>
+
 </head>
+
 <body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">✨</div>
-                Joyhoney Academy
-            </a>
-            <button class="hamburger" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="all-courses.html">Courses</a></li>
-                <li><a href="about-tutor.html">About Tutor</a></li>
-                <li><a href="faq.html">FAQs</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Learn Astrology Step-by-Step with Personal Tutor Guidance</h1>
-                    <p>Start your journey into the world of astrology with our 3-level program. Join Level 1 foundation classes today.</p>
-                    <div class="hero-buttons">
-                        <a href="all-courses.html" class="btn">Explore Courses →</a>
-                        <a href="#" class="btn btn-secondary">Watch Intro</a>
-                    </div>
-                </div>
-                <div class="hero-illustration">✨</div>
-            </div>
-        </div>
-    </section>
+<header>
+<nav class="container">
+<a class="logo" href="#"><div class="logo-icon">✨</div>Joyhoney Academy</a>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Learning Path</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">🔓</div>
-                    <h3>Level 1: Foundation</h3>
-                    <p>Available Now - Begin Your Journey Today</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔒</div>
-                    <h3>Level 2: Intermediate</h3>
-                    <p>Locked - Unlock with Tutor Approval</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔒</div>
-                    <h3>Level 3: Advanced</h3>
-                    <p>Locked - Unlock with Tutor Approval</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="all-courses.html">Courses</a></li>
+<li><a href="about-tutor.html">About Tutor</a></li>
+<li><a href="faq.html">FAQs</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+<li class="cart-icon">🛒<span class="cart-badge">2</span></li>
+</ul>
+</nav>
+</header>
 
-    <section class="section" style="background:white;">
-        <div class="container">
-            <h2 class="section-title">Featured Courses</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">🌌</div>
-                    <h3>Astrology 101</h3>
-                    <p>Learn fundamental principles of astrology</p>
-                    <p style="margin-top:15px;font-size:20px;font-weight:700;color:var(--gold-dark);">₹4,999</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔮</div>
-                    <h3>Birth Charts</h3>
-                    <p>Master reading and interpreting charts</p>
-                    <p style="margin-top:15px;font-size:20px;font-weight:700;color:var(--gold-dark);">₹4,999</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🌠</div>
-                    <h3>Planets & Meanings</h3>
-                    <p>Deep dive into planetary energies</p>
-                    <p style="margin-top:15px;font-size:20px;font-weight:700;color:var(--gold-dark);">₹4,999</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+<div class="container">
+<div class="hero-content">
 
-    <footer>
-        <div class="container">
-            <p>© 2026 Joyhoney Academy. All rights reserved.</p>
-        </div>
-    </footer>
+<div class="hero-text">
+<h1>Learn Astrology Step-by-Step</h1>
+<p>Personal tutor guided astrology learning.</p>
 
-    <script>
-        function toggleMenu(){const h=document.querySelector('.hamburger'),n=document.getElementById('navLinks'),b=document.body;h.classList.toggle('active');n.classList.toggle('active');b.style.overflow=n.classList.contains('active')?'hidden':'';}
-        document.addEventListener('click',e=>{const nav=document.querySelector('nav'),n=document.getElementById('navLinks'),h=document.querySelector('.hamburger');if(!nav.contains(e.target)&&n.classList.contains('active')){h.classList.remove('active');n.classList.remove('active');document.body.style.overflow='';}});
-        document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click',()=>{const h=document.querySelector('.hamburger'),n=document.getElementById('navLinks');h.classList.remove('active');n.classList.remove('active');document.body.style.overflow='';}));
-    </script>
+<div class="hero-buttons">
+<a class="btn btn-primary" href="#">Enroll</a>
+<a class="btn btn-secondary" href="#">Login</a>
+</div>
+</div>
+
+<div class="hero-illustration">
+<div class="astrology-chart">SVG HERE</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Back to Top Button -->
+
 </body>
 </html>
