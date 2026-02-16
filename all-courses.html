@@ -1089,28 +1089,49 @@ padding:10px 0;
 
 }
 
+/* ===== FORCE FOOTER MOBILE FIX ===== */
+
+@media(max-width:768px){
+
+.footer-content{
+grid-template-columns:1fr !important;
+gap:40px;
+}
+
+.footer-bottom-content{
+flex-direction:column;
+gap:15px;
+text-align:center;
+}
+
+.footer-bottom-links{
+justify-content:center;
+flex-wrap:wrap;
+}
+
+}
+
     </style>
 </head>
-<body>
+<<body>
+
     <div class="menu-overlay" onclick="closeMenu()"></div>
-    <!-- Header -->
+    
     <header>
         <nav class="container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">✨</div>
                 Joyhoney Academy
             </a>
+    
             <div class="menu-toggle" onclick="openMenu()">☰</div>
-
+    
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="all-courses.html">Courses</a></li>
-                <li><a href="about-tutor.html">About Tutor</a></li>
-                <li><a href="faq.html">FAQs</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                ...
             </ul>
+        </nav>
     </header>
+    
 
     <div class="container">
         <!-- Breadcrumbs -->
