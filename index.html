@@ -1883,37 +1883,22 @@ svg { max-width:100%; }
 </div>
 
 </body>
-<style>
-.menu-toggle{
-display:none;
-font-size:26px;
-cursor:pointer;
-}
-
-@media(max-width:968px){
-
-.menu-toggle{
-display:block;
-}
-
-.nav-links{
-display:none;
-flex-direction:column;
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,.1);
-position:absolute;
-right:20px;
-top:70px;
-width:220px;
-}
-
-.nav-links.active{
-display:flex;
-}
-
-}
-
-</style>
+<script>
+    function toggleMenu(){
+    const menu=document.querySelector('.nav-links');
+    menu.classList.toggle('active');
+    }
+    
+    /* Close menu when clicking outside */
+    
+    document.addEventListener('click',function(e){
+    const menu=document.querySelector('.nav-links');
+    const toggle=document.querySelector('.menu-toggle');
+    
+    if(!menu.contains(e.target) && !toggle.contains(e.target)){
+    menu.classList.remove('active');
+    }
+    });
+    </script>
+    
 </html>
