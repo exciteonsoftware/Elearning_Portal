@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Joyhoney Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #f5f1ed;
+            --warm-white: #faf8f6;
+            --gold: #c4a574;
+            --gold-dark: #9d7d4f;
+            --gold-light: #d4b994;
+            --dark-text: #5c4a3a;
+            --medium-text: #6b5d52;
+            --light-text: #8a7b6f;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Decorative Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(196, 165, 116, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="15" y="25" font-size="12" fill="%23c4a574" opacity="0.15">✦</text><text x="70" y="45" font-size="10" fill="%23c4a574" opacity="0.12">★</text><text x="35" y="75" font-size="11" fill="%23c4a574" opacity="0.13">⋆</text></svg>');
+            background-size: 250px 250px;
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            background: var(--warm-white);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        .hero-badge {
+            background: var(--gold);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--medium-text);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        
+        /* Contact Cards */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .contact-card {
+            background: var(--warm-white);
+            padding: 35px 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(74, 63, 53, 0.15);
+            border-color: var(--gold);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+        }
+        
+        .contact-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+        }
+        
+        .contact-card p {
+            font-size: 15px;
+            color: var(--medium-text);
+            line-height: 1.6;
+        }
+        
+        .contact-card a {
+            color: var(--gold-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-card a:hover {
+            color: var(--gold);
+        }
+        
+        /* Contact Form Section */
+        .contact-form-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .form-image {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 16px;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(196, 165, 116, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-image::before {
+            content: '✨';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            color: white;
+        }
+        
+        .form-placeholder {
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            padding: 40px;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .form-container {
+            background: var(--warm-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+        }
+        
+        .form-badge {
+            background: var(--gold);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-container h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(196, 165, 116, 0.2);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+            color: var(--dark-text);
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(196, 165, 116, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+        }
+        
+        /* Office Hours */
+        .office-hours {
+            background: var(--warm-white);
+            padding: 50px;
+            border-radius: 16px;
+            margin-bottom: 60px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+            text-align: center;
+        }
+        
+        .office-hours h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 30px;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hours-item {
+            padding: 20px;
+            background: rgba(196, 165, 116, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(196, 165, 116, 0.15);
+        }
+        
+        .hours-item .day {
+            font-weight: 700;
+            color: var(--dark-text);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .hours-item .time {
+            color: var(--medium-text);
+            font-size: 14px;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 38px;
+            font-weight: 600;
+            text-align: center;
+            color: var(--dark-text);
+            margin-bottom: 50px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--warm-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(74, 63, 53, 0.08);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--dark-text);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 2px;
+        }
+        
+        .author-info p {
+            font-size: 13px;
+            color: var(--medium-text);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: var(--warm-white);
+            padding: 60px 50px;
+            border-radius: 16px;
+            margin: 60px 0;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid rgba(196, 165, 116, 0.2);
+            padding: 25px 0;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .faq-question::before {
+            content: 'Q:';
+            color: var(--gold);
+            font-weight: 700;
+        }
+        
+        .faq-answer {
+            font-size: 15px;
+            color: var(--medium-text);
+            line-height: 1.7;
+            padding-left: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--warm-white);
+            border-top: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><text x="100" y="80" font-size="14" fill="%23c4a574" opacity="0.15">✦</text><text x="300" y="120" font-size="12" fill="%23c4a574" opacity="0.12">★</text><text x="500" y="90" font-size="16" fill="%23c4a574" opacity="0.15">⋆</text></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0.6;
+            z-index: 0;
+        }
+        
+        footer > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-main {
+            padding: 60px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, rgba(196, 165, 116, 0.08) 0%, rgba(196, 165, 116, 0.04) 100%);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(196, 165, 116, 0.2);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-section::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            opacity: 0.15;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+        }
+        
+        .newsletter-section h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+        
+        .newsletter-section p {
+            color: var(--medium-text);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid rgba(196, 165, 116, 0.3);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(196, 165, 116, 0.1);
+        }
+        
+        .newsletter-btn {
+            padding: 14px 32px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .newsletter-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+        }
+        
+        .footer-brand {
+            max-width: 350px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .footer-logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .footer-description {
+            color: var(--medium-text);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background: #f0ebe5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .footer-column h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            color: var(--medium-text);
+            font-size: 15px;
+        }
+        
+        .contact-info strong {
+            color: var(--dark-text);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(196, 165, 116, 0.15);
+            padding: 25px 0;
+        }
+        
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            color: var(--medium-text);
+            font-size: 14px;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .footer-bottom-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-bottom-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top:hover {
+            background: var(--gold-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(196, 165, 116, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .contact-cards,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-brand {
+                max-width: 100%;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✨</div>
+                Joyhoney Academy
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-courses.html">Courses</a></li>
+                <li><a href="about-tutor.html">About Tutor</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <span class="hero-badge">CONTACT US</span>
+            <h1 class="hero-title">Course Contact<br>can join with us.</h1>
+            <p class="hero-subtitle">
+                Have questions about our astrology courses? We're here to help you begin your celestial journey. 
+                Reach out anytime and we'll guide you through the stars.
+            </p>
+        </section>
+
+        <!-- Contact Cards -->
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Contact Phone Number</h3>
+                <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                <p style="font-size: 13px; margin-top: 5px;">Mon-Sat, 9 AM - 6 PM</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Our Email Address</h3>
+                <p><a href="/cdn-cgi/l/email-protection#c9aaa6a7bda8aabd89a3a6b0a1a6a7acb0e7a0a7"><span class="__cf_email__" data-cfemail="7f1c10110b1e1c0b3f1510061710111a06511611">[email&#160;protected]</span></a></p>
+                <p style="font-size: 13px; margin-top: 5px;">We reply within 24 hours</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Our Location</h3>
+                <p>123 Cosmic Lane<br>Starlight District<br>Mumbai, India</p>
+            </div>
+        </div>
+
+        <!-- Contact Form Section -->
+        <section class="contact-form-section">
+            <div class="form-image">
+                <div class="form-placeholder">
+                    <p style="font-size: 24px; font-weight: 700; margin-bottom: 10px;">📍 Find Us Here</p>
+                    <p>Add your map or location image</p>
+                    <p style="font-size: 14px; margin-top: 20px; opacity: 0.9;">Visit our office or schedule<br>a virtual consultation</p>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <span class="form-badge">EDUCATION FOR EVERYONE</span>
+                <h2>Get a Course You Can Contact With Me</h2>
+                
+                <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.');">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Your Subject</label>
+                        <input type="text" id="subject" placeholder="What would you like to discuss?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Tell us more about your interest in our courses..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        GET IT NOW
+                        <span>→</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Office Hours -->
+        <section class="office-hours">
+            <h3>Office Hours & Availability</h3>
+            <div class="hours-grid">
+                <div class="hours-item">
+                    <div class="day">Monday - Friday</div>
+                    <div class="time">9:00 AM - 6:00 PM</div>
+                </div>
+                <div class="hours-item">
+                    <div class="day">Saturday</div>
+                    <div class="time">10:00 AM - 4:00 PM</div>
+                </div>
+                <div class="hours-item">
+                    <div class="day">Sunday</div>
+                    <div class="time">Closed</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+            <h2 class="section-title">What Our Students Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            The personalized guidance I received was incredible. The tutor-approval system ensures 
+                            you're truly ready before advancing. Best astrology course I've taken!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">P</div>
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>Level 2 Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            From complete beginner to confident chart reader in just 6 months. The structured 
+                            progression and expert teaching made all the difference.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">R</div>
+                            <div class="author-info">
+                                <h4>Rajesh Kumar</h4>
+                                <p>Level 3 Graduate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            The customer support is amazing! They answered all my questions promptly and helped 
+                            me choose the right course for my goals. Highly recommend!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">A</div>
+                            <div class="author-info">
+                                <h4>Ananya Patel</h4>
+                                <p>Level 1 Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <!-- Newsletter Section -->
+                <div class="newsletter-section">
+                    <div class="newsletter-content">
+                        <h3>✨ Subscribe to Our Cosmic Newsletter</h3>
+                        <p>Get weekly astrology insights, course updates, and celestial guidance delivered to your inbox.</p>
+                        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                            <button type="submit" class="newsletter-btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="footer-content">
+                    <!-- Brand Section -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="logo-icon">✨</div>
+                            <span class="footer-logo-text">Joyhoney Academy</span>
+                        </div>
+                        <p class="footer-description">Join our growing community of astrology learners and explore the wisdom of the stars with us.</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">f</a>
+                            <a href="#" class="social-icon">𝕏</a>
+                            <a href="#" class="social-icon">📷</a>
+                            <a href="#" class="social-icon">in</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Useful Links -->
+                    <div class="footer-column">
+                        <h3><span>🔗</span> Useful Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="about-tutor.html">About Us</a></li>
+                            <li><a href="#privacy">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Our Company -->
+                    <div class="footer-column">
+                        <h3><span>🏢</span> Our Company</h3>
+                        <ul class="footer-links">
+                            <li><a href="about-tutor.html">Instructor</a></li>
+                            <li><a href="#events">Events</a></li>
+                            <li><a href="all-courses.html">Course</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Get Contact -->
+                    <div class="footer-column">
+                        <h3><span>📞</span> Get Contact</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <strong>Phone:</strong>
+                                <a href="tel:+919876543210">+91 98765 43210</a>
+                            </li>
+                            <li>
+                                <strong>E-mail:</strong>
+                                <a href="/cdn-cgi/l/email-protection#51323e3f25303225113b3e28393e3f34287f383f"><span class="__cf_email__" data-cfemail="a5c6cacbd1c4c6d1e5cfcadccdcacbc0dc8bcccb">[email&#160;protected]</span></a>
+                            </li>
+                            <li>
+                                <strong>Address:</strong>
+                                123 Cosmic Lane, Starlight District, Mumbai, India
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">Copyright © 2025 Joyhoney Academy. All rights reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#terms">Terms of service</a></li>
+                        <li><a href="#privacy">Privacy policy</a></li>
+                        <li><a href="#login">Login & Registe

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Systems & Planetary Placements - Course Preview - Joyhoney Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #f5f1ed;
+            --warm-white: #faf8f6;
+            --gold: #c4a574;
+            --gold-dark: #9d7d4f;
+            --gold-light: #d4b994;
+            --dark-text: #5c4a3a;
+            --medium-text: #6b5d52;
+            --light-text: #8a7b6f;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Decorative Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(196, 165, 116, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="15" y="25" font-size="12" fill="%23c4a574" opacity="0.15">✦</text><text x="70" y="45" font-size="10" fill="%23c4a574" opacity="0.12">★</text><text x="35" y="75" font-size="11" fill="%23c4a574" opacity="0.13">⋆</text></svg>');
+            background-size: 250px 250px;
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            background: var(--warm-white);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            padding: 30px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--medium-text);
+        }
+        
+        .breadcrumbs a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--gold-dark);
+        }
+        
+        /* Lock Alert Banner */
+        .lock-banner {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #fbbf24;
+            border-radius: 12px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .lock-banner-icon {
+            font-size: 32px;
+        }
+        
+        .lock-banner-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 5px;
+        }
+        
+        .lock-banner-content p {
+            color: #92400e;
+            font-size: 14px;
+        }
+        
+        /* Course Hero */
+        .course-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 30px 0 50px;
+        }
+        
+        .course-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .level-badge {
+            background: #e8dfd4;
+            color: var(--dark-text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-block;
+            width: fit-content;
+        }
+        
+        .course-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 42px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--dark-text);
+        }
+        
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .stars {
+            color: #fbbf24;
+            font-size: 18px;
+        }
+        
+        .review-count {
+            font-size: 15px;
+            color: var(--medium-text);
+        }
+        
+        .course-meta {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--medium-text);
+            font-size: 15px;
+        }
+        
+        .course-description {
+            font-size: 16px;
+            color: var(--medium-text);
+            line-height: 1.7;
+        }
+        
+        .price-section {
+            background: var(--warm-white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+        
+        .enroll-btn {
+            width: 100%;
+            padding: 16px;
+            background: #d4d4d4;
+            color: #8a8a8a;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: not-allowed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .unlock-info {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #fcd34d;
+            text-align: center;
+        }
+        
+        .unlock-info strong {
+            display: block;
+            color: #92400e;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .unlock-info p {
+            color: #92400e;
+            font-size: 13px;
+        }
+        
+        .course-thumbnail {
+            width: 100%;
+            height: 350px;
+            background: var(--warm-white);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+        }
+        
+        .course-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            background: var(--warm-white);
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+        }
+        
+        .section-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-icon {
+            font-size: 32px;
+        }
+        
+        /* Learning Outcomes */
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .outcome-item {
+            display: flex;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(196, 165, 116, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .outcome-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .outcome-text {
+            font-size: 15px;
+            color: var(--dark-text);
+        }
+        
+        /* Curriculum */
+        .curriculum-modules {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .module {
+            border: 1px solid rgba(196, 165, 116, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, #f5ede4 0%, #e8dfd4 100%);
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .module-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .module-info {
+            font-size: 13px;
+            color: var(--medium-text);
+        }
+        
+        .module-content {
+            padding: 20px 25px;
+            background: white;
+        }
+        
+        .lesson-list {
+            list-style: none;
+        }
+        
+        .lesson-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+        
+        .lesson-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark-text);
+            font-size: 15px;
+        }
+        
+        .lesson-icon {
+            color: var(--gold);
+        }
+        
+        .lesson-duration {
+            color: var(--light-text);
+            font-size: 13px;
+        }
+        
+        /* Video Preview */
+        .video-preview {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #1a1a2e;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .play-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .play-icon:hover {
+            background: var(--gold-dark);
+            transform: scale(1.1);
+        }
+        
+        .video-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Instructor Notes */
+        .instructor-note {
+            background: linear-gradient(135deg, rgba(196, 165, 116, 0.08) 0%, rgba(196, 165, 116, 0.04) 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .instructor-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .instructor-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        
+        .instructor-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .instructor-title {
+            font-size: 14px;
+            color: var(--medium-text);
+        }
+        
+        .instructor-message {
+            font-size: 15px;
+            color: var(--dark-text);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .course-hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-section {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✨</div>
+                Joyhoney Academy
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-courses.html">Courses</a></li>
+                <li><a href="about-tutor.html">About Tutor</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+    </header>
+
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="all-courses.html">All Courses</a>
+            <span>›</span>
+            <span>Course Preview</span>
+        </div>
+
+        <!-- Lock Alert Banner -->
+        <div class="lock-banner">
+            <div class="lock-banner-icon">🔒</div>
+            <div class="lock-banner-content">
+                <h3>This Course is Locked</h3>
+                <p>Complete Level 1 and receive tutor approval to unlock this Level 2 course. You can preview all course content below.</p>
+            </div>
+        </div>
+
+        <!-- Course Hero Section -->
+        <div class="course-hero">
+            <div class="course-info">
+                <span class="level-badge">Level 2 - Intermediate</span>
+                <h1 class="course-title">House Systems & Planetary Placements</h1>
+                
+                <div class="rating-row">
+                    <span class="stars">★★★★★</span>
+                    <span class="review-count">(18 Reviews)</span>
+                </div>
+                
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <span>📚</span>
+                        <span>6 Classes</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>12 hours total</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🎓</span>
+                        <span>Certificate included</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>Astrology</span>
+                    </div>
+                </div>
+                
+                <p class="course-description">
+                    Master the intricate system of astrological houses and understand how planetary placements shape personality, destiny, and life events. This intermediate course builds on Level 1 foundations to give you deep expertise in chart interpretation.
+                </p>
+            </div>
+            
+            <div>
+                <div class="course-thumbnail">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 350'%3E%3Crect fill='%23faf6f0' width='400' height='350'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='28' fill='%23c4a574' opacity='0.3'%3ELevel 2%3C/text%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='18' fill='%23c4a574' opacity='0.25'%3EHouse Systems %26 Placements%3C/text%3E%3C/svg%3E" alt="Course thumbnail">
+                </div>
+                
+                <div class="price-section">
+                    <div class="price">₹4,999</div>
+                    <button class="enroll-btn">
+                        <span>🔒</span>
+                        <span>Locked - Complete Level 1 First</span>
+                    </button>
+                    <div class="unlock-info">
+                        <strong>How to Unlock:</strong>
+                        <p>Complete all Level 1 courses and receive approval from your tutor to access this level.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What You'll Learn -->
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-icon">🎯</span>
+                What You'll Master
+            </h2>
+            <div class="outcomes-grid">
+                <div class="outcome-item">
+                    <span class="outcome-icon">✨</span>
+                    <span class="outcome-text">Understand all 12 astrological houses and their life areas</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="outcome-icon">🌟</span>
+                    <span class="outcome-text">Compare different house systems (Placidus, Koch, Equal)</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="outcome-icon">🔮</span>
+                    <span class="outcome-text">Interpret planetary placements in each house</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="outcome-icon">📊</span>
+                    <span class="outcome-text">Analyze house rulerships and their significance</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="outcome-icon">⚡</span>
+                    <span class="outcome-text">Master transit interpretations and timing</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="outcome-icon">💫</span>
+                    <span class="outcome-text">Apply advanced chart synthesis techniques</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Video Preview -->
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-icon">🎬</span>
+                Sample Lesson Preview
+            </h2>
+            <div class="video-preview">
+                <video style="width: 100%; height: 100%; object-fit: cover;" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect fill='%231a1a2e' width='800' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23c4a574'%3EIntroduction to House Systems%3C/text%3E%3C/svg%3E">
+                </video>
+                <div class="video-overlay">
+                    <div class="play-icon">▶</div>
+                    <div class="video-title">Introduction to House Systems (8:45)</div>
+                </div>
+            </div>
+            <p style="margin-top: 15px; color: var(--medium-text); font-size: 14px;">
+                🎥 This is a sample lesson from Module 1. Full course access unlocks after Level 1 completion.
+            </p>
+        </div>
+
+        <!-- Full Curriculum -->
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-icon">📚</span>
+                Complete Curriculum
+            </h2>
+            <div class="curriculum-modules">
+                <!-- Module 1 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div>
+                            <div class="module-title">Module 1: Understanding the 12 Houses</div>
+                            <div class="module-info">6 lessons • 2.5 hours</div>
+                        </div>
+                        <span>▼</span>
+                    </div>
+                    <div class="module-content">
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Introduction to House Systems
+                                </span>
+                                <span class="lesson-duration">8:45</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Houses 1-4: Self, Resources, Communication, Home
+                                </span>
+                                <span class="lesson-duration">22:30</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Houses 5-8: Creativity, Service, Partnership, Transformation
+                                </span>
+                                <span class="lesson-duration">24:15</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Houses 9-12: Philosophy, Career, Community, Spirituality
+                                </span>
+                                <span class="lesson-duration">26:40</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📄</span>
+                                    House Keywords Reference Sheet
+                                </span>
+                                <span class="lesson-duration">PDF</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">✏️</span>
+                                    Practice: Identify House Themes in Sample Charts
+                                </span>
+                                <span class="lesson-duration">Assignment</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div>
+                            <div class="module-title">Module 2: House System Comparisons</div>
+                            <div class="module-info">4 lessons • 2 hours</div>
+                        </div>
+                        <span>▼</span>
+                    </div>
+                    <div class="module-content">
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Placidus vs. Koch vs. Equal House Systems
+                                </span>
+                                <span class="lesson-duration">18:20</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Whole Sign Houses: Ancient Wisdom
+                                </span>
+                                <span class="lesson-duration">15:45</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    When to Use Different Systems
+                                </span>
+                                <span class="lesson-duration">12:30</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">✏️</span>
+                                    Compare Your Chart in 3 Different Systems
+                                </span>
+                                <span class="lesson-duration">Assignment</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div>
+                            <div class="module-title">Module 3: Planetary Placements</div>
+                            <div class="module-info">8 lessons • 3.5 hours</div>
+                        </div>
+                        <span>▼</span>
+                    </div>
+                    <div class="module-content">
+                        <ul class="lesson-list">
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Sun Through the Houses
+                                </span>
+                                <span class="lesson-duration">25:15</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Moon Through the Houses
+                                </span>
+                                <span class="lesson-duration">28:30</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Mercury, Venus, Mars Placements
+                                </span>
+                                <span class="lesson-duration">32:45</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Jupiter and Saturn: The Social Planets
+                                </span>
+                                <span class="lesson-duration">22:20</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📹</span>
+                                    Outer Planets: Uranus, Neptune, Pluto
+                                </span>
+                                <span class="lesson-duration">24:10</span>
+                            </li>
+                            <li class="lesson-item">
+                                <span class="lesson-name">
+                                    <span class="lesson-icon">📄</span>
+                                    Planetary Placement Interpretation Guide
+                                </span>
+                                <span class="lesson-duration">PDF</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div>
+                            <div class="module-title">Module 4: House Rulerships</div>
+                            <div class="module-info">5 lessons • 2 hours</div>
+                        </div>
+                        <span>▼</span>
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="module">
+                    <div class="module-header">
+                        <div>
+                            <div class="module-title">Module 5: Transits and Timing</div>
+                            <div class="module-info">6 lessons • 2.5 hours</div>
+                        </div>
+                        <span>▼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructor Notes -->
+        <div class="content-section">
+            <h2 class="section-title">
+                <span class="section-icon">👨‍🏫</span>
+                Message from Your Instructor
+            </h2>
+            <div class="instructor-note">
+                <div class="instructor-header">
+                    <div class="instructor-avatar">✨</div>
+                    <div>
+                        <div class="instructor-name">Your Astrology Tutor</div>
+                        <div class="instructor-title">15+ years teaching experience</div>
+                    </div>
+                </div>
+                <p class="instructor-message">
+                    "Level 2 is where astrology truly comes alive! After mastering the basics in Level 1, you're ready to dive deep into the house systems - the framework that brings meaning to planetary positions. In this course, I'll guide you through not just memorizing house meanings, but truly understanding how they work together to paint a complete picture of a person's life journey.
+                    <br><br>
+                    We'll explore different house systems so you can choose what resonates with your practice. You'll learn to see patterns that most beginners miss, and by the end, you'll be able to look at any chart and immediately understand the major life themes at play.
+                    <br><br>
+                    I've designed this level to be highly practical - lots of real chart examples, hands-on practice, and personalized feedback on your assignments. Complete Level 1 with dedication, and I look forward to approving your progression to this exciting intermediate journey!"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 60px;"></div>
+</body>
+</html>

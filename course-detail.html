@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrology 101: The Language of the Stars - Joyhoney Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #f5f1ed;
+            --warm-white: #faf8f6;
+            --gold: #c4a574;
+            --gold-dark: #9d7d4f;
+            --gold-light: #d4b994;
+            --dark-text: #5c4a3a;
+            --medium-text: #6b5d52;
+            --light-text: #8a7b6f;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Decorative Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(196, 165, 116, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="15" y="25" font-size="12" fill="%23c4a574" opacity="0.15">✦</text><text x="70" y="45" font-size="10" fill="%23c4a574" opacity="0.12">★</text><text x="35" y="75" font-size="11" fill="%23c4a574" opacity="0.13">⋆</text></svg>');
+            background-size: 250px 250px;
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            background: var(--warm-white);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            padding: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--medium-text);
+        }
+        
+        .breadcrumbs a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--gold-dark);
+        }
+        
+        /* Course Hero */
+        .course-hero {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 50px;
+            padding: 20px 0 40px;
+        }
+        
+        .course-main {
+            flex: 1;
+        }
+        
+        .course-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+        }
+        
+        .course-badges {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .bestseller-badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .rating-number {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--dark-text);
+        }
+        
+        .stars {
+            color: #fbbf24;
+            font-size: 16px;
+        }
+        
+        .course-meta-top {
+            display: flex;
+            gap: 25px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(196, 165, 116, 0.2);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--medium-text);
+            font-size: 14px;
+        }
+        
+        .meta-icon {
+            color: var(--gold);
+        }
+        
+        /* Course Image */
+        .course-image-section {
+            background: var(--warm-white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+            margin-bottom: 20px;
+        }
+        
+        .course-thumbnail {
+            width: 100%;
+            height: 300px;
+            background: #faf6f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(196, 165, 116, 0.2);
+        }
+        
+        .course-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        /* Sidebar Price Card */
+        .price-card {
+            background: var(--warm-white);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .price-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .urgency-badge {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+            margin-bottom: 12px;
+        }
+        
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(196, 165, 116, 0.3);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--gold-dark);
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(196, 165, 116, 0.1);
+        }
+        
+        .money-back {
+            text-align: center;
+            color: var(--light-text);
+            font-size: 13px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .course-info-list {
+            border-top: 1px solid rgba(196, 165, 116, 0.2);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(196, 165, 116, 0.1);
+            font-size: 14px;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            color: var(--medium-text);
+            font-weight: 500;
+        }
+        
+        .info-value {
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+        
+        .show-more-link {
+            color: var(--gold-dark);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        
+        .show-more-link:hover {
+            color: var(--gold);
+        }
+        
+        .social-share {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(196, 165, 116, 0.2);
+        }
+        
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(196, 165, 116, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: rgba(196, 165, 116, 0.1);
+            border-color: var(--gold);
+            color: var(--gold-dark);
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, rgba(196, 165, 116, 0.08) 0%, rgba(196, 165, 116, 0.04) 100%);
+            padding: 18px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid rgba(196, 165, 116, 0.2);
+        }
+        
+        .contact-box p {
+            font-size: 13px;
+            color: var(--medium-text);
+            margin-bottom: 10px;
+        }
+        
+        .contact-number {
+            color: var(--gold-dark);
+            font-weight: 700;
+            font-size: 17px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        
+        .contact-number:hover {
+            color: var(--gold);
+        }
+        
+        /* Tabs */
+        .tabs-section {
+            margin: 40px 0 60px;
+        }
+        
+        .tab-navigation {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid rgba(196, 165, 116, 0.2);
+            background: var(--warm-white);
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(74, 63, 53, 0.05);
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 20px 24px;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--medium-text);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(196, 165, 116, 0.08);
+            color: var(--gold-dark);
+        }
+        
+        .tab-btn.active {
+            color: var(--gold-dark);
+            background: white;
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Overview Tab */
+        .overview-section h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin: 30px 0 20px 0;
+        }
+        
+        .overview-section h3:first-child {
+            margin-top: 0;
+        }
+        
+        .curriculum-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .curriculum-list li {
+            padding: 10px 0;
+            color: var(--dark-text);
+            font-size: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .curriculum-list li::before {
+            content: "•";
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 1;
+        }
+        
+        .overview-section p {
+            color: var(--dark-text);
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        
+        /* Course Content Tab */
+        .lesson-list {
+            list-style: none;
+        }
+        
+        .lesson-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(196, 165, 116, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .lesson-item:hover {
+            background: rgba(196, 165, 116, 0.05);
+        }
+        
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+        
+        .lesson-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark-text);
+            font-size: 15px;
+        }
+        
+        .lesson-icon {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        
+        .lesson-duration {
+            color: var(--light-text);
+            font-size: 14px;
+        }
+        
+        /* Live Sessions */
+        .live-sessions-section h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 25px;
+        }
+        
+        .live-session {
+            border: 1px solid rgba(196, 165, 116, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .live-session:hover {
+            box-shadow: 0 4px 15px rgba(74, 63, 53, 0.1);
+            border-color: var(--gold);
+        }
+        
+        .session-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .live-badge {
+            background: #dc2626;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .session-date {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        
+        .add-icon {
+            width: 38px;
+            height: 38px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+        
+        .add-icon:hover {
+            background: var(--gold);
+            color: white;
+        }
+        
+        /* Instructor Tab */
+        .instructor-profile {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        .instructor-avatar-large {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(196, 165, 116, 0.3);
+        }
+        
+        .instructor-details h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+        
+        .instructor-title {
+            color: var(--medium-text);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .instructor-bio {
+            color: var(--dark-text);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .course-hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-card {
+                position: static;
+            }
+            
+            .tab-navigation {
+                flex-direction: column;
+            }
+            
+            .tab-content {
+                padding: 25px 20px;
+            }
+            
+            .instructor-profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✨</div>
+                Joyhoney Academy
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-courses.html">Courses</a></li>
+                <li><a href="about-tutor.html">About Tutor</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+    </header>
+
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="all-courses.html">All Courses</a>
+            <span>›</span>
+            <span>Astrology 101</span>
+        </div>
+
+        <!-- Course Hero -->
+        <div class="course-hero">
+            <div class="course-main">
+                <h1 class="course-title">Astrology 101: The Language of the Stars</h1>
+                
+                <div class="course-badges">
+                    <span class="bestseller-badge">
+                        <span>⭐</span>
+                        Bestseller
+                    </span>
+                    <div class="rating-section">
+                        <span class="rating-number">4.8</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+                </div>
+                
+                <div class="course-meta-top">
+                    <div class="meta-item">
+                        <span class="meta-icon">👤</span>
+                        <span>By Guest in <strong>Astrology</strong></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📅</span>
+                        <span>Last updated 12/2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🌐</span>
+                        <span>English</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🎓</span>
+                        <span>Certified Course</span>
+                    </div>
+                </div>
+                
+                <div class="course-image-section">
+                    <div class="course-thumbnail">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 350'%3E%3Crect fill='%23faf6f0' width='500' height='350'/%3E%3Ctext x='50%25' y='45%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='32' fill='%23c4a574' opacity='0.3'%3EBasic Level 1%3C/text%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='20' fill='%23c4a574' opacity='0.25'%3EMastery %26 Research%3C/text%3E%3C/svg%3E" alt="Course thumbnail">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <div class="price">₹4,999.00</div>
+                        <div class="urgency-badge">
+                            <span>⏱️</span>
+                            3 days left!
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary">Add to Cart</button>
+                    <button class="btn btn-secondary">Buy Now</button>
+                    
+                    <div class="money-back">
+                        <span>🔒</span>
+                        Money refund policy
+                    </div>
+                    
+                    <div class="course-info-list">
+                        <div class="info-row">
+                            <span class="info-label">Start Date</span>
+                            <span class="info-value">6 Hrs 20 Min</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Enrolled</span>
+                            <span class="info-value">100</span>
+                        </div>
+                        <a href="#" class="show-more-link">Show More <span>▼</span></a>
+                    </div>
+                    
+                    <div class="social-share">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">𝕏</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">📷</a>
+                    </div>
+                    
+                    <div class="contact-box">
+                        <p>For details about the course</p>
+                        <a href="tel:9597078912" class="contact-number">
+                            <span>📞</span>
+                            Call Us: 9597078912
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="tabs-section">
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="openTab(event, 'overview')">Overview</button>
+                <button class="tab-btn" onclick="openTab(event, 'content')">Course Content</button>
+                <button class="tab-btn" onclick="openTab(event, 'instructor')">Instructor</button>
+            </div>
+            
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <div class="overview-section">
+                    <h3>What you'll learn</h3>
+                    <ul class="curriculum-list">
+                        <li>Advanced Yogas</li>
+                        <li>Chart rectification</li>
+                        <li>Comparative astrology</li>
+                        <li>Research</li>
+                        <li>Teaching</li>
+                        <li>Understanding the 12 zodiac signs and their characteristics</li>
+                        <li>Interpreting birth charts and planetary positions</li>
+                        <li>Learning about houses and their significance in astrology</li>
+                        <li>Mastering aspects and their meanings in chart analysis</li>
+                    </ul>
+                    
+                    <h3>Course Description</h3>
+                    <p>
+                        Welcome to Astrology 101: The Language of the Stars! This comprehensive beginner course is designed to introduce you to the fascinating world of astrology. Whether you're completely new to astrology or looking to build a solid foundation, this course will guide you step-by-step through the essential concepts.
+                    </p>
+                    <p>
+                        You'll learn how to read birth charts, understand planetary influences, explore the significance of the 12 houses, and discover how celestial movements impact our daily lives. By the end of this course, you'll have the skills to interpret basic astrological charts and apply this ancient wisdom to modern life.
+                    </p>
+                    
+                    <h3>Who this course is for</h3>
+                    <ul class="curriculum-list">
+                        <li>Complete beginners with no prior knowledge of astrology</li>
+                        <li>Anyone curious about understanding their birth chart</li>
+                        <li>Individuals interested in spiritual and personal development</li>
+                        <li>Those seeking to deepen their self-awareness through astrology</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Course Content Tab -->
+            <div id="content" class="tab-content">
+                <div class="overview-section">
+                    <h3>Course Curriculum</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <span class="lesson-name">
+                                <span class="lesson-icon">▶️</span>
+                                Introduction to Astrology
+                            </span>
+                            <span class="lesson-duration">12:30</span>
+                        </li>
+                        <li class="lesson-item">
+                            <span class="lesson-name">
+                                <span class="lesson-icon">▶️</span>
+                                Understanding the 12 Zodiac Signs
+                            </span>
+                            <span class="lesson-duration">25:45</span>
+                        </li>
+                        <li class="lesson-item">
+                            <span class="lesson-name">
+                                <span class="lesson-icon">▶️</span>
+                                Planetary Basics and Their Meanings
+                            </span>
+                            <span class="lesson-duration">18:20</span>
+                        </li>
+                        <li class="lesson-item">
+                            <span class="lesson-name">
+                                <span class="lesson-icon">▶️</span>
+                                The 12 Houses Explained
+                            </span>
+                            <span class="lesson-duration">22:15</span>
+                        </li>
+                        <li class="lesson-item">
+                            <span class="lesson-name">
+                                <span class="lesson-icon">▶️</span>
+                                Reading Your Birth Chart
+                            </span>
+                            <span class="lesson-duration">30:40</span>
+                        </li>
+                        <li class="lesson-item">
+                            <span class="lesson-name">
+                                <span class="lesson-icon">▶️</span>
+                                Aspects and Their Interpretations
+                            </span>
+                            <span class="lesson-duration">20:10</span>
+                        </li>
+                        <li class="lesson-item">
+                            <span class="lesson-name">
+                                <span class="lesson-icon">📄</span>
+                                Chart Interpretation Worksheet
+                            </span>
+                            <span class="lesson-duration">PDF</span>
+                        </li>
+                        <li class="lesson-item">
+                            <span class="lesson-name">
+                                <span class="lesson-icon">✏️</span>
+                                Final Assessment Quiz
+                            </span>
+                            <span class="lesson-duration">15 min</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="live-sessions-section" style="margin-top: 40px;">
+                        <h3>Live Sessions</h3>
+                        <div class="live-session">
+                            <div class="session-info">
+                                <span class="live-badge">live</span>
+                                <span class="session-date">14 Feb 2026, 06:40 PM</span>
+                            </div>
+                            <div class="add-icon">+</div>
+                        </div>
+                        <div class="live-session">
+                            <div class="session-info">
+                                <span class="live-badge">live</span>
+                                <span class="session-date">21 Feb 2026, 06:40 PM</span>
+                            </div>
+                            <div class="add-icon">+</div>
+                        </div>
+                        <div class="live-session">
+                            <div class="session-info">
+                                <span class="live-badge">live</span>
+                                <span class="session-date">28 Feb 2026, 06:40 PM</span>
+                            </div>
+                            <div class="add-icon">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Instructor Tab -->
+            <div id="instructor" class="tab-content">
+                <div class="instructor-profile">
+                    <div class="instructor-avatar-large">✨</div>
+                    <div class="instructor-details">
+                        <h3>Master Astrologer</h3>
+                        <p class="instructor-title">15+ Years Teaching Experience | Certified Vedic Astrologer</p>
+                        <div class="instructor-bio">
+                            <p>
+                                Welcome! I'm thrilled to be your guide on this astrological journey. With over 15 years of experience in teaching and practicing astrology, I've helped thousands of students discover the profound wisdom of the stars.
+                            </p>
+                            <p>
+                                My approach combines traditional Vedic astrology with modern teaching methods, making complex concepts accessible and practical. I believe astrology is not just about predictions, but about understanding yourself and your life path more deeply.
+                            </p>
+                            <p>
+                                In this course, I'll be sharing the foundational knowledge that has taken me years to master, presented in a clear, step-by-step format. Whether you're learning for personal growth or aspiring to become a professional astrologer, I'm here to support you every step of the way.
+                            </p>
+                            <p style="margin-top: 20px;">
+                                <strong>Qualifications:</strong><br>
+                                • Certified Vedic Astrology Teacher<br>
+                                • 15+ years of professional practice<br>
+                                • 5000+ students trained globally<br>
+                                • Author of "Celestial Wisdom: A Beginner's Guide"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tab buttons
+            var tabButtons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the selected tab and mark button as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

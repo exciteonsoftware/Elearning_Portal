@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Joyhoney Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --cream: #f5f1ed; --warm-white: #faf8f6; --gold: #c4a574; --gold-dark: #9d7d4f;
+            --gold-light: #d4b994; --dark-text: #5c4a3a; --medium-text: #6b5d52; --light-text: #8a7b6f;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif; background: var(--cream); color: var(--dark-text);
+            line-height: 1.6; min-height: 100vh; position: relative;
+        }
+        
+        body::before {
+            content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 20% 30%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(196, 165, 116, 0.08) 0%, transparent 50%);
+            pointer-events: none; z-index: 0;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+        
+        header { background: var(--warm-white); padding: 15px 0; box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05); position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--dark-text); text-decoration: none; }
+        .logo-icon { width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .nav-links { display: flex; gap: 35px; align-items: center; list-style: none; }
+        .nav-links a { color: var(--medium-text); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold-dark); }
+        
+        .hero-section { text-align: center; padding: 60px 0 40px; }
+        .hero-badge { background: var(--gold); color: white; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .hero-title { font-family: 'Crimson Text', serif; font-size: 48px; font-weight: 600; color: var(--dark-text); margin-bottom: 15px; line-height: 1.2; }
+        .hero-subtitle { font-size: 16px; color: var(--medium-text); max-width: 700px; margin: 0 auto 40px; line-height: 1.7; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px; }
+        .gallery-item { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08); transition: all 0.3s; cursor: pointer; background: var(--warm-white); aspect-ratio: 1/1; }
+        .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 12px 35px rgba(74, 63, 53, 0.15); }
+        .gallery-image { width: 100%; height: 100%; background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); display: flex; align-items: center; justify-content: center; }
+        .gallery-placeholder { color: white; font-size: 50px; opacity: 0.5; }
+        
+        .stats-section { background: var(--warm-white); padding: 60px; border-radius: 16px; margin-bottom: 60px; box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+        .stat-number { font-family: 'Crimson Text', serif; font-size: 48px; font-weight: 700; color: var(--gold); margin-bottom: 10px; }
+        .stat-label { font-size: 16px; color: var(--medium-text); font-weight: 500; }
+        
+        @media (max-width: 968px) {
+            .container { padding: 0 20px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✨</div>
+                Joyhoney Academy
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-courses.html">Courses</a></li>
+                <li><a href="about-tutor.html">About Tutor</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero-section">
+            <span class="hero-badge">OUR GALLERY</span>
+            <h1 class="hero-title">Moments & Memories</h1>
+            <p class="hero-subtitle">Explore our vibrant community of astrology learners, classroom sessions, workshops, and celestial events.</p>
+        </section>
+
+        <div class="gallery-grid">
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">📚</div></div></div>
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">🎓</div></div></div>
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">✨</div></div></div>
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">👥</div></div></div>
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">🌟</div></div></div>
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">🔮</div></div></div>
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">🎉</div></div></div>
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">⭐</div></div></div>
+            <div class="gallery-item"><div class="gallery-image"><div class="gallery-placeholder">📖</div></div></div>
+        </div>
+
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item"><div class="stat-number">5000+</div><div class="stat-label">Students Trained</div></div>
+                <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Years Experience</div></div>
+                <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Workshops Held</div></div>
+                <div class="stat-item"><div class="stat-number">4.8</div><div class="stat-label">Average Rating</div></div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

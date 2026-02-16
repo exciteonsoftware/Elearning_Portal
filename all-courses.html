@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses - Joyhoney Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #f5f1ed;
+            --warm-white: #faf8f6;
+            --gold: #c4a574;
+            --gold-dark: #9d7d4f;
+            --gold-light: #d4b994;
+            --dark-text: #5c4a3a;
+            --medium-text: #6b5d52;
+            --light-text: #8a7b6f;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Decorative Background Elements - matching homepage */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(196, 165, 116, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="15" y="25" font-size="12" fill="%23c4a574" opacity="0.15">✦</text><text x="70" y="45" font-size="10" fill="%23c4a574" opacity="0.12">★</text><text x="35" y="75" font-size="11" fill="%23c4a574" opacity="0.13">⋆</text><text x="80" y="85" font-size="10" fill="%23c4a574" opacity="0.12">✧</text><circle cx="50" cy="15" r="1.5" fill="%23c4a574" opacity="0.1"/><circle cx="25" cy="55" r="1.5" fill="%23c4a574" opacity="0.1"/><circle cx="90" cy="30" r="1" fill="%23c4a574" opacity="0.08"/></svg>');
+            background-size: 250px 250px;
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            background: var(--warm-white);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Lato', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            padding: 30px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--medium-text);
+        }
+        
+        .breadcrumbs a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .breadcrumbs span {
+            color: var(--light-text);
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 20px 0 30px;
+        }
+        
+        .page-title-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        
+        .course-count-badge {
+            background: var(--gold);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--medium-text);
+        }
+        
+        /* Controls Bar */
+        .controls-bar {
+            background: var(--warm-white);
+            padding: 20px 25px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+        }
+        
+        .controls-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 8px;
+            background: white;
+            padding: 6px;
+            border-radius: 10px;
+            border: 1px solid #e5e5e5;
+        }
+        
+        .view-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--medium-text);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .view-btn.active {
+            background: var(--gold);
+            color: white;
+        }
+        
+        .results-count {
+            color: var(--medium-text);
+            font-size: 14px;
+        }
+        
+        .controls-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-input {
+            padding: 12px 45px 12px 20px;
+            border: 2px solid #e5e5e5;
+            border-radius: 25px;
+            font-size: 14px;
+            width: 280px;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(196, 165, 116, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text);
+        }
+        
+        .sort-dropdown {
+            padding: 12px 40px 12px 16px;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--medium-text);
+            background: white;
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%236b5d52" d="M6 9L1 4h10z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+        
+        .filter-btn {
+            padding: 12px 20px;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            background: white;
+            color: var(--medium-text);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold-dark);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            margin: 50px 0 30px;
+            padding: 25px 30px;
+            background: var(--warm-white);
+            border-radius: 16px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 2px 15px rgba(74, 63, 53, 0.08);
+        }
+        
+        .section-header.next-level {
+            border-left-color: var(--gold-dark);
+        }
+        
+        .section-header.advanced {
+            border-left-color: #9d7d4f;
+        }
+        
+        .section-header h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-header p {
+            color: var(--medium-text);
+            font-size: 15px;
+        }
+        
+        /* Course Grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        /* Course Card */
+        .course-card {
+            background: #faf6f0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400"><text x="50" y="40" font-size="14" fill="%23c4a574" opacity="0.25">✦</text><text x="250" y="60" font-size="12" fill="%23c4a574" opacity="0.2">★</text><text x="280" y="100" font-size="10" fill="%23c4a574" opacity="0.22">⋆</text><text x="30" y="350" font-size="11" fill="%23c4a574" opacity="0.2">✧</text><text x="270" y="370" font-size="13" fill="%23c4a574" opacity="0.23">✦</text><text x="150" y="380" font-size="10" fill="%23c4a574" opacity="0.2">★</text></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 16px;
+        }
+        
+        .course-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(74, 63, 53, 0.15);
+        }
+        
+        .course-card.locked {
+            opacity: 0.85;
+        }
+        
+        .course-card.locked:hover {
+            transform: translateY(-4px);
+        }
+        
+        .course-card.locked::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(1px);
+            z-index: 1;
+            pointer-events: none;
+            border-radius: 16px;
+        }
+        
+        .course-image {
+            height: 200px;
+            background: linear-gradient(135deg, #faf6f0 0%, #f5ede4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .course-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid rgba(196, 165, 116, 0.2);
+        }
+        
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 3;
+        }
+        
+        .status-badge.paid {
+            background: var(--gold);
+            color: white;
+        }
+        
+        .status-badge.locked {
+            background: #e5e5e5;
+            color: var(--medium-text);
+        }
+        
+        .lock-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            opacity: 0.4;
+            z-index: 2;
+        }
+        
+        .level-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #e8dfd4;
+            color: var(--dark-text);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+        }
+        
+        .course-content {
+            padding: 25px;
+            background: #faf6f0;
+        }
+        
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .stars {
+            color: #fbbf24;
+            font-size: 14px;
+        }
+        
+        .review-count {
+            font-size: 13px;
+            color: var(--medium-text);
+        }
+        
+        .course-card h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+            line-height: 1.3;
+            min-height: 50px;
+        }
+        
+        .course-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: var(--medium-text);
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .curriculum {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(245, 241, 237, 0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(196, 165, 116, 0.1);
+        }
+        
+        .curriculum-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+        
+        .curriculum-list {
+            list-style: none;
+            font-size: 13px;
+            color: var(--medium-text);
+            line-height: 1.8;
+        }
+        
+        .curriculum-list li:before {
+            content: "• ";
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-locked {
+            background: var(--gold-light);
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-locked:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+        
+        .unlock-requirement {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #92400e;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .controls-left,
+            .controls-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-brand {
+                max-width: 100%;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
+            
+            .newsletter-section {
+                padding: 25px 20px;
+            }
+            
+            .newsletter-section h3 {
+                font-size: 20px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .controls-right {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .search-input,
+            .sort-dropdown,
+            .filter-btn {
+                width: 100%;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--warm-white);
+            border-top: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Celestial background decorations */
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><text x="100" y="80" font-size="14" fill="%23c4a574" opacity="0.15">✦</text><text x="300" y="120" font-size="12" fill="%23c4a574" opacity="0.12">★</text><text x="500" y="90" font-size="16" fill="%23c4a574" opacity="0.15">⋆</text><text x="700" y="150" font-size="11" fill="%23c4a574" opacity="0.13">✧</text><text x="900" y="100" font-size="13" fill="%23c4a574" opacity="0.14">✦</text><text x="1100" y="130" font-size="12" fill="%23c4a574" opacity="0.12">★</text><text x="150" y="250" font-size="10" fill="%23c4a574" opacity="0.11">⋆</text><text x="400" y="280" font-size="14" fill="%23c4a574" opacity="0.13">✧</text><text x="650" y="320" font-size="12" fill="%23c4a574" opacity="0.12">✦</text><text x="850" y="270" font-size="11" fill="%23c4a574" opacity="0.12">★</text><text x="1050" y="300" font-size="13" fill="%23c4a574" opacity="0.13">⋆</text><text x="200" y="450" font-size="12" fill="%23c4a574" opacity="0.12">✧</text><text x="450" y="480" font-size="14" fill="%23c4a574" opacity="0.14">★</text><text x="750" y="500" font-size="11" fill="%23c4a574" opacity="0.11">✦</text><text x="950" y="460" font-size="13" fill="%23c4a574" opacity="0.13">⋆</text><circle cx="250" cy="180" r="2" fill="%23c4a574" opacity="0.1"/><circle cx="550" cy="220" r="1.5" fill="%23c4a574" opacity="0.1"/><circle cx="800" cy="380" r="2" fill="%23c4a574" opacity="0.1"/><circle cx="1000" cy="200" r="1.5" fill="%23c4a574" opacity="0.1"/><text x="350" y="400" font-size="16" fill="%23c4a574" opacity="0.12">☽</text><text x="600" y="180" font-size="15" fill="%23c4a574" opacity="0.11">☉</text></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0.6;
+            z-index: 0;
+        }
+        
+        footer > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-main {
+            padding: 60px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, rgba(196, 165, 116, 0.08) 0%, rgba(196, 165, 116, 0.04) 100%);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(196, 165, 116, 0.2);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-section::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            opacity: 0.15;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+        }
+        
+        .newsletter-section h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+        
+        .newsletter-section p {
+            color: var(--medium-text);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid rgba(196, 165, 116, 0.3);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(196, 165, 116, 0.1);
+        }
+        
+        .newsletter-btn {
+            padding: 14px 32px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .newsletter-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+        }
+        
+        .footer-brand {
+            max-width: 350px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .footer-logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .footer-description {
+            color: var(--medium-text);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background: #f0ebe5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .footer-column h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column h3::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--gold-light);
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-column:nth-child(2) h3::before {
+            content: '🔗';
+            background: transparent;
+            font-size: 18px;
+        }
+        
+        .footer-column:nth-child(3) h3::before {
+            content: '🏢';
+            background: transparent;
+            font-size: 18px;
+        }
+        
+        .footer-column:nth-child(4) h3::before {
+            content: '📞';
+            background: transparent;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold-dark);
+            transform: translateX(3px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            color: var(--medium-text);
+            font-size: 15px;
+        }
+        
+        .contact-info strong {
+            color: var(--dark-text);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(196, 165, 116, 0.15);
+            padding: 25px 0;
+        }
+        
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            color: var(--medium-text);
+            font-size: 14px;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .footer-bottom-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-bottom-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top:hover {
+            background: var(--gold-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(196, 165, 116, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✨</div>
+                Joyhoney Academy
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-courses.html">Courses</a></li>
+                <li><a href="about-tutor.html">About Tutor</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+    </header>
+
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <span>All Courses</span>
+        </div>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="page-title-row">
+                <h1>All Courses</h1>
+                <span class="course-count-badge">🎓 7 Courses</span>
+            </div>
+            <p class="page-subtitle">Your Journey to Astrology Mastery Starts Here</p>
+        </div>
+
+        <!-- Controls Bar -->
+        <div class="controls-bar">
+            <div class="controls-left">
+                <div class="view-toggle">
+                    <button class="view-btn active">⊞ Grid</button>
+                    <button class="view-btn">☰ List</button>
+                </div>
+                <span class="results-count">Showing 1-9 of 19 results</span>
+            </div>
+            <div class="controls-right">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search Your Course..">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <select class="sort-dropdown">
+                    <option>Default</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Level: 1 to 4</option>
+                </select>
+                <button class="filter-btn">Filter ⌄</button>
+            </div>
+        </div>
+
+        <!-- SECTION 1: Available to You -->
+        <div class="section-header">
+            <h2>🔓 Available to You</h2>
+            <p>Start your astrology journey with our foundation courses - enroll now!</p>
+        </div>
+
+        <div class="course-grid">
+            <!-- Level 1 Course 1 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <span class="level-badge">Level 1</span>
+                    <span class="status-badge paid">Paid</span>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23faf6f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='24' fill='%23c4a574' opacity='0.3'%3EBasic Level 1 - Mastery %26 Research%3C/text%3E%3C/svg%3E" alt="Course" class="course-thumbnail">
+                </div>
+                <div class="course-content">
+                    <div class="rating-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(15 Reviews)</span>
+                    </div>
+                    <h3>Astrology 101: The Language of the Stars</h3>
+                    <div class="course-meta">
+                        <span class="meta-item">📚 Level 1</span>
+                        <span class="meta-item">🏷️ Astrology</span>
+                    </div>
+                    <div class="curriculum">
+                        <div class="curriculum-title">Curriculum</div>
+                        <ul class="curriculum-list">
+                            <li>Zodiac signs basics</li>
+                            <li>Planetary influences</li>
+                            <li>Birth chart reading</li>
+                            <li>Houses introduction</li>
+                        </ul>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">₹4,999</span>
+                        <a href="course-detail.html" class="btn btn-primary" style="text-decoration: none; display: block; text-align: center;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 1 Course 2 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <span class="level-badge">Level 1</span>
+                    <span class="status-badge paid">Paid</span>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23faf6f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='24' fill='%23c4a574' opacity='0.3'%3EBasic Level 1 - Foundation%3C/text%3E%3C/svg%3E" alt="Course" class="course-thumbnail">
+                </div>
+                <div class="course-content">
+                    <div class="rating-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(12 Reviews)</span>
+                    </div>
+                    <h3>Cosmic Foundations: Your First Steps</h3>
+                    <div class="course-meta">
+                        <span class="meta-item">📚 Level 1</span>
+                        <span class="meta-item">🏷️ Astrology</span>
+                    </div>
+                    <div class="curriculum">
+                        <div class="curriculum-title">Curriculum</div>
+                        <ul class="curriculum-list">
+                            <li>Astrology history</li>
+                            <li>Elements & modalities</li>
+                            <li>Planetary dignity</li>
+                            <li>Aspect patterns</li>
+                        </ul>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">₹4,999</span>
+                        <a href="course-detail.html" class="btn btn-primary" style="text-decoration: none; display: block; text-align: center;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Your Next Level -->
+        <div class="section-header next-level">
+            <h2>🎯 Your Next Level</h2>
+            <p>Unlocks after Level 1 completion and tutor approval</p>
+        </div>
+
+        <div class="course-grid">
+            <!-- Level 2 Course 1 -->
+            <div class="course-card locked">
+                <div class="course-image">
+                    <span class="level-badge">Level 2</span>
+                    <span class="status-badge locked">Locked</span>
+                    <div class="lock-overlay">🔒</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23faf6f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='24' fill='%23c4a574' opacity='0.3'%3EIntermediate Level 2%3C/text%3E%3C/svg%3E" alt="Course" class="course-thumbnail">
+                </div>
+                <div class="course-content">
+                    <div class="rating-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(18 Reviews)</span>
+                    </div>
+                    <h3>House Systems & Planetary Placements</h3>
+                    <div class="course-meta">
+                        <span class="meta-item">📚 Level 2</span>
+                        <span class="meta-item">🏷️ Astrology</span>
+                    </div>
+                    <div class="curriculum">
+                        <div class="curriculum-title">Curriculum</div>
+                        <ul class="curriculum-list">
+                            <li>12 houses in-depth</li>
+                            <li>House systems comparison</li>
+                            <li>Planetary rulerships</li>
+                            <li>Transits basics</li>
+                        </ul>
+                    </div>
+                    <div class="unlock-requirement">
+                        🎓 Complete Level 1 to unlock
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">₹4,999</span>
+                        <a href="course-preview.html" class="btn btn-locked">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2 Course 2 -->
+            <div class="course-card locked">
+                <div class="course-image">
+                    <span class="level-badge">Level 2</span>
+                    <span class="status-badge locked">Locked</span>
+                    <div class="lock-overlay">🔒</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23faf6f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='24' fill='%23c4a574' opacity='0.3'%3EIntermediate Level 2%3C/text%3E%3C/svg%3E" alt="Course" class="course-thumbnail">
+                </div>
+                <div class="course-content">
+                    <div class="rating-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(14 Reviews)</span>
+                    </div>
+                    <h3>Advanced Chart Interpretation</h3>
+                    <div class="course-meta">
+                        <span class="meta-item">📚 Level 2</span>
+                        <span class="meta-item">🏷️ Astrology</span>
+                    </div>
+                    <div class="curriculum">
+                        <div class="curriculum-title">Curriculum</div>
+                        <ul class="curriculum-list">
+                            <li>Aspect interpretation</li>
+                            <li>Chart patterns</li>
+                            <li>Retrograde planets</li>
+                            <li>Synastry basics</li>
+                        </ul>
+                    </div>
+                    <div class="unlock-requirement">
+                        🎓 Complete Level 1 to unlock
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">₹4,999</span>
+                        <a href="course-preview.html" class="btn btn-locked">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Advanced Levels -->
+        <div class="section-header advanced">
+            <h2>⭐ Advanced Levels</h2>
+            <p>Master-level courses available after progressive completion</p>
+        </div>
+
+        <div class="course-grid">
+            <!-- Level 3 Course -->
+            <div class="course-card locked">
+                <div class="course-image">
+                    <span class="level-badge">Level 3</span>
+                    <span class="status-badge locked">Locked</span>
+                    <div class="lock-overlay">🔒</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23faf6f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='24' fill='%23c4a574' opacity='0.3'%3EAdvanced Level 3%3C/text%3E%3C/svg%3E" alt="Course" class="course-thumbnail">
+                </div>
+                <div class="course-content">
+                    <div class="rating-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(15 Reviews)</span>
+                    </div>
+                    <h3>Advanced Level 3 - Specialized Astrology</h3>
+                    <div class="course-meta">
+                        <span class="meta-item">📚 Level 3</span>
+                        <span class="meta-item">🏷️ Astrology</span>
+                    </div>
+                    <div class="curriculum">
+                        <div class="curriculum-title">Curriculum</div>
+                        <ul class="curriculum-list">
+                            <li>Medical astrology</li>
+                            <li>Business astrology</li>
+                            <li>Child astrology</li>
+                            <li>Muhurta (timing)</li>
+                        </ul>
+                    </div>
+                    <div class="unlock-requirement">
+                        🎓 Complete Level 2 to unlock
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">₹5,999</span>
+                        <a href="course-preview.html" class="btn btn-locked">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 4 Course 1 -->
+            <div class="course-card locked">
+                <div class="course-image">
+                    <span class="level-badge">Level 4</span>
+                    <span class="status-badge locked">Locked</span>
+                    <div class="lock-overlay">🔒</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23faf6f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='24' fill='%23c4a574' opacity='0.3'%3EAdvanced Level 4%3C/text%3E%3C/svg%3E" alt="Course" class="course-thumbnail">
+                </div>
+                <div class="course-content">
+                    <div class="rating-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(15 Reviews)</span>
+                    </div>
+                    <h3>Advanced Level 4 - Professional Astrology Practice</h3>
+                    <div class="course-meta">
+                        <span class="meta-item">📚 Level 4</span>
+                        <span class="meta-item">🏷️ Astrology</span>
+                    </div>
+                    <div class="curriculum">
+                        <div class="curriculum-title">Curriculum</div>
+                        <ul class="curriculum-list">
+                            <li>Advanced synthesis</li>
+                            <li>Client handling</li>
+                            <li>Ethics</li>
+                            <li>Paid consultation setup</li>
+                        </ul>
+                    </div>
+                    <div class="unlock-requirement">
+                        🎓 Complete Level 3 to unlock
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">₹6,999</span>
+                        <a href="course-preview.html" class="btn btn-locked">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 4 Course 2 -->
+            <div class="course-card locked">
+                <div class="course-image">
+                    <span class="level-badge">Level 4</span>
+                    <span class="status-badge locked">Locked</span>
+                    <div class="lock-overlay">🔒</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23faf6f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='24' fill='%23c4a574' opacity='0.3'%3EAdvanced Level 5%3C/text%3E%3C/svg%3E" alt="Course" class="course-thumbnail">
+                </div>
+                <div class="course-content">
+                    <div class="rating-row">
+                        <span class="stars">★★★★★</span>
+                        <span class="review-count">(16 Reviews)</span>
+                    </div>
+                    <h3>Advanced Level 5 - Mastery & Research</h3>
+                    <div class="course-meta">
+                        <span class="meta-item">📚 Level 4</span>
+                        <span class="meta-item">🏷️ Astrology</span>
+                    </div>
+                    <div class="curriculum">
+                        <div class="curriculum-title">Curriculum</div>
+                        <ul class="curriculum-list">
+                            <li>Advanced Yogas</li>
+                            <li>Chart rectification</li>
+                            <li>Comparative astrology</li>
+                            <li>Research methods</li>
+                        </ul>
+                    </div>
+                    <div class="unlock-requirement">
+                        🎓 Complete Level 3 to unlock
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">₹6,999</span>
+                        <a href="course-preview.html" class="btn btn-locked">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <!-- Newsletter Section -->
+                <div class="newsletter-section">
+                    <div class="newsletter-content">
+                        <h3>✨ Subscribe to Our Cosmic Newsletter</h3>
+                        <p>Get weekly astrology insights, course updates, and celestial guidance delivered to your inbox.</p>
+                        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                            <button type="submit" class="newsletter-btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="footer-content">
+                    <!-- Brand Section -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="logo-icon">✨</div>
+                            <span class="footer-logo-text">Joyhoney Academy</span>
+                        </div>
+                        <p class="footer-description">Join our growing community of astrology learners and explore the wisdom of the stars with us.</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                            <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+                            <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+                            <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Useful Links -->
+                    <div class="footer-column">
+                        <h3>Useful Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="about-tutor.html">About Us</a></li>
+                            <li><a href="#privacy">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Our Company -->
+                    <div class="footer-column">
+                        <h3>Our Company</h3>
+                        <ul class="footer-links">
+                            <li><a href="#instructor">Instructor</a></li>
+                            <li><a href="#events">Events</a></li>
+                            <li><a href="#courses">Course</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Get Contact -->
+                    <div class="footer-column">
+                        <h3>Get Contact</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <strong>Phone:</strong>
+                                <a href="tel:+919876543210">+91 98765 43210</a>
+                            </li>
+                            <li>
+                                <strong>E-mail:</strong>
+                                <a href="/cdn-cgi/l/email-protection#a9cac6c7ddc8cadde9c3c6d0c1c6c7ccd087c0c7"><span class="__cf_email__" data-cfemail="f0939f9e84919384b09a9f89989f9e9589de999e">[email&#160;protected]</span></a>
+                            </li>
+                            <li>
+                                <strong>Address:</strong>
+                                123 Cosmic Lane, Starlight District, Mumbai, India
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">Copyright © 2025 Joyhoney Academy. All rights reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#terms">Terms of service</a></li>
+                        <li><a href="#privacy">Privacy policy</a></li>
+                        <li><a href="#login">Login & Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Bu

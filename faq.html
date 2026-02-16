@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Frequently Asked Questions - Joyhoney Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #f5f1ed;
+            --warm-white: #faf8f6;
+            --gold: #c4a574;
+            --gold-dark: #9d7d4f;
+            --gold-light: #d4b994;
+            --dark-text: #5c4a3a;
+            --medium-text: #6b5d52;
+            --light-text: #8a7b6f;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Decorative Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(196, 165, 116, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="15" y="25" font-size="12" fill="%23c4a574" opacity="0.15">✦</text><text x="70" y="45" font-size="10" fill="%23c4a574" opacity="0.12">★</text><text x="35" y="75" font-size="11" fill="%23c4a574" opacity="0.13">⋆</text></svg>');
+            background-size: 250px 250px;
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            background: var(--warm-white);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        .hero-badge {
+            background: var(--gold);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--medium-text);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        
+        /* FAQ Categories */
+        .faq-categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .category-card {
+            background: var(--warm-white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(74, 63, 53, 0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        
+        .category-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .category-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+        
+        .faq-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .faq-column h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 25px;
+        }
+        
+        .accordion-item {
+            background: var(--warm-white);
+            border: 1px solid rgba(196, 165, 116, 0.2);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .accordion-item:hover {
+            border-color: var(--gold);
+            box-shadow: 0 2px 10px rgba(74, 63, 53, 0.08);
+        }
+        
+        .accordion-header {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--warm-white);
+            transition: all 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background: rgba(196, 165, 116, 0.05);
+        }
+        
+        .accordion-header.active {
+            background: rgba(196, 165, 116, 0.08);
+        }
+        
+        .accordion-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-text);
+            flex: 1;
+            line-height: 1.4;
+        }
+        
+        .accordion-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(45deg);
+            background: var(--gold-dark);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+        }
+        
+        .accordion-body {
+            padding: 0 25px 20px 25px;
+            color: var(--medium-text);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        /* Contact Form Section */
+        .contact-form-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .form-image {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 16px;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(196, 165, 116, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-image::before {
+            content: '✨';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            color: white;
+        }
+        
+        .form-placeholder {
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            padding: 40px;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .form-container {
+            background: var(--warm-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+        }
+        
+        .form-badge {
+            background: var(--gold);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-container h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(196, 165, 116, 0.2);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+            color: var(--dark-text);
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(196, 165, 116, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(196, 165, 116, 0.15) 0%, rgba(196, 165, 116, 0.05) 100%);
+            padding: 60px;
+            text-align: center;
+            border-radius: 16px;
+            margin-bottom: 60px;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+        
+        .cta-section p {
+            font-size: 16px;
+            color: var(--medium-text);
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Lato', sans-serif;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .faq-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .faq-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .faq-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✨</div>
+                Joyhoney Academy
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-courses.html">Courses</a></li>
+                <li><a href="about-tutor.html">About Tutor</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <span class="hero-badge">HELP CENTER</span>
+            <h1 class="hero-title">Frequently Asked Questions</h1>
+            <p class="hero-subtitle">
+                Find answers to common questions about our astrology courses, enrollment process, 
+                and tutor-approval system. Can't find what you're looking for? Contact us anytime!
+            </p>
+        </section>
+
+        <!-- FAQ Categories -->
+        <div class="faq-categories">
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <h3>Courses</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💳</div>
+                <h3>Payments</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎓</div>
+                <h3>Learning</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⚙️</div>
+                <h3>Account</h3>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-columns">
+                <!-- Column 1: Purchases & Refunds -->
+                <div class="faq-column">
+                    <h2>Purchases & Refunds</h2>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">What is it? How does it work?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                You can run easily. Any School, University, College can be use this education template for their educational purpose. A university can be run their online learning management system by education template.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">How can I get the customer support?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                You can contact us through email at contact@joyhoney.in or call us at +91 98765 43210 during business hours (Mon-Sat, 9 AM - 6 PM). We typically respond within 24 hours.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">Can I get update regularly and For how long do I get updates?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                Yes! Once enrolled, you receive lifetime access to all course materials including future updates. You'll be notified via email whenever new content is added or existing materials are updated.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">What payment methods do you accept?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                We accept all major credit/debit cards, UPI, net banking, and digital wallets. All transactions are secure and encrypted for your safety.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">Can I get a refund if I'm not satisfied?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                Yes! We offer a 7-day money-back guarantee. If you're not satisfied with the course within the first 7 days of purchase, contact us for a full refund with no questions asked.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Making Courses -->
+                <div class="faq-column">
+                    <h2>Making Courses</h2>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">What is it? How does it work?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                You can run easily. Any School, University, College can be use this education template for their educational purpose. A university can be run their online learning management system by education template.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">How does the tutor-approval system work?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                After completing each level, your tutor will review your progress and assignments. Once you've demonstrated mastery, they'll unlock the next level for you. This ensures quality learning and proper foundation building.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">Do I need prior knowledge of astrology?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                No! Our Level 1 courses are designed for complete beginners. We'll teach you everything from scratch, starting with the fundamentals of zodiac signs, planets, and houses.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">What's included in each course?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                Each course includes video lessons, downloadable materials, practice assignments, live sessions with Q&A, personalized tutor feedback, and a certificate upon completion. You also get lifetime access to all materials.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">How long does it take to complete a level?</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                On average, students complete Level 1 in 4-6 weeks with dedicated study. However, you can learn at your own pace since you have lifetime access to the course materials.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-form-section">
+            <div class="form-image">
+                <div class="form-placeholder">
+                    <p style="font-size: 32px; font-weight: 700; margin-bottom: 10px;">500x550</p>
+                    <p>Add your map or image here</p>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <span class="form-badge">EDUCATION FOR EVERYONE</span>
+                <h2>Get a Course You Can Contact With Me</h2>
+                
+                <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.');">
+                    <div class="form-group">
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea placeholder="Message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        GET IT NOW
+                        <span>→</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Still Have Questions?</h2>
+            <p>Our team is here to help! Get in touch and we'll answer all your questions.</p>
+            <a href="contact.html" class="btn btn-primary">Contact Us →</a>
+        </section>
+    </div>
+
+    <script>
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+            
+            // Close all accordions
+            document.querySelectorAll('.accordion-header').forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.remove('active');
+            });
+            
+            // Open clicked accordion if it wasn't active
+            if (!isActive) {
+                header.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+    </script>
+
+    <div style="height: 60px;"></div>
+</body>
+</html>

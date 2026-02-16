@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyhoney Academy - Learn Astrology Step-by-Step</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #f5f1ed;
+            --warm-white: #faf8f6;
+            --gold: #c4a574;
+            --gold-dark: #9d7d4f;
+            --gold-light: #d4b994;
+            --dark-text: #5c4a3a;
+            --medium-text: #6b5d52;
+            --light-text: #8a7b6f;
+            --purple-gradient-start: #6366f1;
+            --purple-gradient-end: #a855f7;
+            --lavender-bg: #e9d5ff;
+            --pale-blue: #dbeafe;
+            --pale-yellow: #fef3c7;
+            --pale-pink: #fce7f3;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Decorative Background Elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(196, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(196, 165, 116, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="15" y="25" font-size="12" fill="%23c4a574" opacity="0.15">✦</text><text x="70" y="45" font-size="10" fill="%23c4a574" opacity="0.12">★</text><text x="35" y="75" font-size="11" fill="%23c4a574" opacity="0.13">⋆</text><text x="80" y="85" font-size="10" fill="%23c4a574" opacity="0.12">✧</text><circle cx="50" cy="15" r="1.5" fill="%23c4a574" opacity="0.1"/><circle cx="25" cy="55" r="1.5" fill="%23c4a574" opacity="0.1"/><circle cx="90" cy="30" r="1" fill="%23c4a574" opacity="0.08"/></svg>');
+            background-size: 250px 250px;
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: var(--warm-white);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Lato', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .cart-icon {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 40px 0 40px;
+            background: var(--warm-white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><g opacity="0.15" fill="none" stroke="%23c4a574" stroke-width="0.8"><path d="M20,180 Q30,160 40,150 Q50,140 60,145 Q70,150 75,160 Q80,170 85,175"/><path d="M40,190 Q45,175 50,165 Q55,155 62,158 Q70,162 73,168"/><circle cx="45" cy="155" r="3" fill="%23c4a574"/><circle cx="52" cy="162" r="2.5" fill="%23c4a574"/><circle cx="38" cy="168" r="2" fill="%23c4a574"/><path d="M15,160 Q20,150 28,148 Q35,146 40,150 Q45,154 48,160 Q50,165 52,168"/><path d="M25,170 L28,165 L30,168 L32,164 L35,167"/><ellipse cx="22" cy="145" rx="4" ry="6" transform="rotate(-20 22 145)" fill="%23c4a574" opacity="0.3"/><ellipse cx="55" cy="178" rx="3" ry="5" transform="rotate(15 55 178)" fill="%23c4a574" opacity="0.3"/><path d="M10,140 Q15,135 20,138 Q25,141 28,145 Q30,148 32,152" stroke-dasharray="2,2"/><circle cx="65" cy="185" r="1.5" fill="%23c4a574"/><circle cx="18" cy="152" r="1.5" fill="%23c4a574"/><path d="M48,190 Q52,185 56,183 Q60,181 64,183 Q68,185 70,188"/></g></svg>') bottom left/contain no-repeat;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        .hero-text p {
+            font-size: 16px;
+            color: var(--medium-text);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--medium-text);
+            border: 2px solid #e5e0da;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold-dark);
+        }
+        
+        .hero-illustration {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .astrology-chart {
+            width: 350px;
+            height: 350px;
+            position: relative;
+            opacity: 0.65;
+        }
+        
+        .astrology-chart svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Journey Cards Section */
+        
+        /* Learning Path Section */
+        .learning-path {
+            padding: 40px 0;
+            background: var(--warm-white);
+        }
+        
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 38px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            text-align: left;
+        }
+        
+        .path-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .path-card {
+            background: #fdfcfb;
+            padding: 25px 25px;
+            border-radius: 12px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 2px 15px rgba(74, 63, 53, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            border: 1px solid rgba(196, 165, 116, 0.15);
+            overflow: hidden;
+        }
+        
+        .path-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(196, 165, 116, 0.06) 100%),
+                linear-gradient(135deg, rgba(196, 165, 116, 0.03) 0%, transparent 50%, rgba(196, 165, 116, 0.03) 100%);
+            pointer-events: none;
+        }
+        
+        .path-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(74, 63, 53, 0.12);
+        }
+        
+        .path-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: linear-gradient(135deg, #e8dfd4 0%, #d4c8b8 100%);
+            border-radius: 8px;
+            margin-top: 3px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .path-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .level-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 4px;
+        }
+        
+        .path-card h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+            line-height: 1.2;
+        }
+        
+        .path-status {
+            color: var(--medium-text);
+            font-size: 15px;
+            margin-bottom: 5px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+        }
+        
+        .path-description {
+            color: var(--light-text);
+            font-size: 15px;
+            line-height: 1.5;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+        }
+        
+        .lock-icon {
+            color: var(--gold-dark);
+            font-size: 28px;
+        }
+        
+        /* Featured Courses Section */
+        .featured-courses {
+            padding: 40px 0;
+            background: var(--cream);
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .course-card {
+            background: #faf6f0;
+            border-radius: 16px;
+            overflow: visible;
+            box-shadow: 0 4px 20px rgba(74, 63, 53, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400"><text x="50" y="40" font-size="14" fill="%23c4a574" opacity="0.25">✦</text><text x="250" y="60" font-size="12" fill="%23c4a574" opacity="0.2">★</text><text x="280" y="100" font-size="10" fill="%23c4a574" opacity="0.22">⋆</text><text x="30" y="350" font-size="11" fill="%23c4a574" opacity="0.2">✧</text><text x="270" y="370" font-size="13" fill="%23c4a574" opacity="0.23">✦</text><text x="150" y="380" font-size="10" fill="%23c4a574" opacity="0.2">★</text></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 16px;
+        }
+        
+        .course-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(74, 63, 53, 0.15);
+        }
+        
+        .course-card.locked {
+            opacity: 0.7;
+            position: relative;
+        }
+        
+        .course-card.locked:hover {
+            transform: translateY(-3px);
+        }
+        
+        .course-card.locked::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(2px);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        
+        .course-card.locked {
+            opacity: 0.9;
+        }
+        
+        .course-card.locked .course-image::after {
+            content: '🔒';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .lock-overlay {
+            display: none;
+        }
+        
+        .lock-overlay-icon {
+            display: none;
+        }
+        
+        .lock-overlay-text {
+            display: none;
+        }
+        
+        .course-image {
+            height: 150px;
+            background: linear-gradient(135deg, #faf6f0 0%, #f5ede4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(196, 165, 116, 0.08) 0%, transparent 70%);
+        }
+        
+        .course-icon {
+            z-index: 1;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .course-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .course-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .level-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #e8dfd4;
+            color: var(--dark-text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            z-index: 2;
+        }
+        
+        .course-content {
+            padding: 28px;
+            background: #faf6f0;
+        }
+        
+        .course-card h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+            line-height: 1.3;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .course-info {
+            color: var(--medium-text);
+            font-size: 14px;
+        }
+        
+        .course-price {
+            font-weight: 700;
+            color: var(--dark-text);
+            font-size: 18px;
+        }
+        
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+        
+        .btn-buy {
+            width: 100%;
+            margin-top: 15px;
+            background: var(--gold);
+            color: white;
+        }
+        
+        .btn-buy:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-buy:disabled,
+        .btn-buy.disabled {
+            background: #d4d4d4;
+            color: #8a8a8a;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .btn-buy:disabled:hover,
+        .btn-buy.disabled:hover {
+            background: #d4d4d4;
+            transform: none;
+        }
+        
+        .tutor-approval-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+            border: 1px solid #fcd34d;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 40px 0;
+            background: var(--warm-white);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step::after {
+            content: '→';
+            position: absolute;
+            right: -40px;
+            top: 35px;
+            font-size: 28px;
+            color: var(--gold-light);
+        }
+        
+        .step:last-child::after {
+            display: none;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(196, 165, 116, 0.3);
+        }
+        
+        .step h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark-text);
+        }
+        
+        .step-number {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+        
+        .step p {
+            color: var(--light-text);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .journey-tagline {
+            text-align: center;
+            font-style: italic;
+            color: var(--medium-text);
+            font-size: 17px;
+            margin-top: 50px;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 60px 0;
+            background: var(--warm-white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: #fdfcfb;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(74, 63, 53, 0.08);
+            position: relative;
+            border: 1px solid rgba(196, 165, 116, 0.15);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--dark-text);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 2px;
+        }
+        
+        .author-info p {
+            font-size: 13px;
+            color: var(--medium-text);
+        }
+        
+        /* Instructor Section */
+        .instructor-section {
+            padding: 50px 0;
+            background: linear-gradient(135deg, #faf8f6 0%, #f0ebe5 100%);
+        }
+        
+        .instructor-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .instructor-text h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--dark-text);
+            line-height: 1.3;
+        }
+        
+        .instructor-text p {
+            color: var(--medium-text);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        
+        .instructor-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 165, 116, 0.4);
+        }
+        
+        .btn-contact {
+            background: transparent;
+            border: 2px solid #d4c8b8;
+            color: var(--medium-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-contact:hover {
+            border-color: var(--gold);
+            color: var(--gold-dark);
+            background: rgba(196, 165, 116, 0.05);
+        }
+        
+        .instructor-image {
+            height: 450px;
+            background: linear-gradient(135deg, #f5ede4 0%, #e8dfd4 50%, #d9cfc0 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(74, 63, 53, 0.2);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        
+        /* Botanical and celestial pattern background like mockup */
+        .instructor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><g opacity="0.15" fill="none" stroke="%23c4a574" stroke-width="1.5"><path d="M30,180 Q35,160 45,150 Q55,140 65,145 Q75,150 80,160 Q85,170 90,175"/><path d="M45,190 Q50,175 55,165 Q60,155 67,158 Q75,162 78,168"/><ellipse cx="27" cy="145" rx="5" ry="8" transform="rotate(-20 27 145)" fill="%23c4a574" opacity="0.3"/><ellipse cx="60" cy="178" rx="4" ry="7" transform="rotate(15 60 178)" fill="%23c4a574" opacity="0.3"/><ellipse cx="73" cy="152" rx="4.5" ry="7.5" transform="rotate(25 73 152)" fill="%23c4a574" opacity="0.3"/><circle cx="50" cy="155" r="3" fill="%23c4a574" opacity="0.4"/><circle cx="70" cy="185" r="2.5" fill="%23c4a574" opacity="0.4"/></g><circle cx="320" cy="100" r="80" fill="none" stroke="%23c4a574" stroke-width="0.8" opacity="0.08"/><circle cx="320" cy="100" r="60" fill="none" stroke="%23c4a574" stroke-width="0.6" opacity="0.06"/><circle cx="320" cy="100" r="40" fill="none" stroke="%23c4a574" stroke-width="0.8" opacity="0.08"/><line x1="320" y1="20" x2="320" y2="180" stroke="%23c4a574" stroke-width="0.4" opacity="0.05"/><line x1="240" y1="100" x2="400" y2="100" stroke="%23c4a574" stroke-width="0.4" opacity="0.05"/><text x="280" y="60" font-size="10" fill="%23c4a574" opacity="0.12">✦</text><text x="350" y="140" font-size="8" fill="%23c4a574" opacity="0.1">★</text><text x="310" y="170" font-size="9" fill="%23c4a574" opacity="0.11">⋆</text></svg>');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            z-index: 0;
+        }
+        
+        .instructor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .instructor-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .instructor-placeholder p {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 2px dashed var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--warm-white);
+            border-top: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Celestial background decorations */
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><text x="100" y="80" font-size="14" fill="%23c4a574" opacity="0.15">✦</text><text x="300" y="120" font-size="12" fill="%23c4a574" opacity="0.12">★</text><text x="500" y="90" font-size="16" fill="%23c4a574" opacity="0.15">⋆</text><text x="700" y="150" font-size="11" fill="%23c4a574" opacity="0.13">✧</text><text x="900" y="100" font-size="13" fill="%23c4a574" opacity="0.14">✦</text><text x="1100" y="130" font-size="12" fill="%23c4a574" opacity="0.12">★</text><text x="150" y="250" font-size="10" fill="%23c4a574" opacity="0.11">⋆</text><text x="400" y="280" font-size="14" fill="%23c4a574" opacity="0.13">✧</text><text x="650" y="320" font-size="12" fill="%23c4a574" opacity="0.12">✦</text><text x="850" y="270" font-size="11" fill="%23c4a574" opacity="0.12">★</text><text x="1050" y="300" font-size="13" fill="%23c4a574" opacity="0.13">⋆</text><text x="200" y="450" font-size="12" fill="%23c4a574" opacity="0.12">✧</text><text x="450" y="480" font-size="14" fill="%23c4a574" opacity="0.14">★</text><text x="750" y="500" font-size="11" fill="%23c4a574" opacity="0.11">✦</text><text x="950" y="460" font-size="13" fill="%23c4a574" opacity="0.13">⋆</text><circle cx="250" cy="180" r="2" fill="%23c4a574" opacity="0.1"/><circle cx="550" cy="220" r="1.5" fill="%23c4a574" opacity="0.1"/><circle cx="800" cy="380" r="2" fill="%23c4a574" opacity="0.1"/><circle cx="1000" cy="200" r="1.5" fill="%23c4a574" opacity="0.1"/><text x="350" y="400" font-size="16" fill="%23c4a574" opacity="0.12">☽</text><text x="600" y="180" font-size="15" fill="%23c4a574" opacity="0.11">☉</text></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0.6;
+            z-index: 0;
+        }
+        
+        footer > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-main {
+            padding: 60px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, rgba(196, 165, 116, 0.08) 0%, rgba(196, 165, 116, 0.04) 100%);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(196, 165, 116, 0.2);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-section::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            opacity: 0.15;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+        }
+        
+        .newsletter-section h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+        
+        .newsletter-section p {
+            color: var(--medium-text);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid rgba(196, 165, 116, 0.3);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(196, 165, 116, 0.1);
+        }
+        
+        .newsletter-btn {
+            padding: 14px 32px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .newsletter-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+        }
+        
+        .footer-brand {
+            max-width: 350px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .footer-logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .footer-description {
+            color: var(--medium-text);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background: #f0ebe5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .footer-column h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column h3::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--gold-light);
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-column:nth-child(2) h3::before {
+            content: '🔗';
+            background: transparent;
+            font-size: 18px;
+        }
+        
+        .footer-column:nth-child(3) h3::before {
+            content: '🏢';
+            background: transparent;
+            font-size: 18px;
+        }
+        
+        .footer-column:nth-child(4) h3::before {
+            content: '📞';
+            background: transparent;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold-dark);
+            transform: translateX(3px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            color: var(--medium-text);
+            font-size: 15px;
+        }
+        
+        .contact-info strong {
+            color: var(--dark-text);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info a {
+            color: var(--medium-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(196, 165, 116, 0.15);
+            padding: 25px 0;
+        }
+        
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            color: var(--medium-text);
+            font-size: 14px;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .footer-bottom-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-bottom-links a:hover {
+            color: var(--gold-dark);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(196, 165, 116, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top:hover {
+            background: var(--gold-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(196, 165, 116, 0.4);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .hero-text, .hero-buttons {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .journey-card {
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .journey-card:nth-child(1) { animation-delay: 0.1s; }
+        .journey-card:nth-child(2) { animation-delay: 0.2s; }
+        .journey-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .path-card {
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .path-card:nth-child(1) { animation-delay: 0.1s; }
+        .path-card:nth-child(2) { animation-delay: 0.2s; }
+        .path-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .course-card {
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.2s; }
+        .course-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .journey-cards, .path-cards, .course-grid, .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .instructor-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .step::after {
+                display: none;
+            }
+            
+            .nav-links {
+                gap: 20px;
+                font-size: 14px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-brand {
+                max-width: 100%;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
+            
+            .newsletter-section {
+                padding: 25px 20px;
+            }
+            
+            .newsletter-section h3 {
+                font-size: 20px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">✨</div>
+                Joyhoney Academy
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-courses.html">Courses</a></li>
+                <li><a href="about-tutor.html">About Tutor</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+                        🛒
+                        <span class="cart-badge">2</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Learn Astrology Step-by-Step with Personal Tutor Guidance</h1>
+                    <p>Start your journey into the world of astrology with our 3-level program. Join Level 1 foundation classes today. Higher levels unlocked by your tutor.</p>
+                    <div class="hero-buttons">
+                        <a href="all-courses.html" class="btn btn-primary">Enroll Level 1</a>
+                        <a href="#login" class="btn btn-secondary">Student Login</a>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <div class="astrology-chart">
+                        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer circles - more visible -->
+                            <circle cx="250" cy="250" r="240" fill="none" stroke="#c4a574" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="250" cy="250" r="220" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.35"/>
+                            <circle cx="250" cy="250" r="200" fill="none" stroke="#c4a574" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="250" cy="250" r="180" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.35"/>
+                            
+                            <!-- Inner circles -->
+                            <circle cx="250" cy="250" r="160" fill="none" stroke="#c4a574" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="250" cy="250" r="140" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.35"/>
+                            <circle cx="250" cy="250" r="120" fill="none" stroke="#c4a574" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="250" cy="250" r="100" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.35"/>
+                            <circle cx="250" cy="250" r="80" fill="none" stroke="#c4a574" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="250" cy="250" r="60" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.35"/>
+                            <circle cx="250" cy="250" r="40" fill="none" stroke="#c4a574" stroke-width="1.2" opacity="0.4"/>
+                            <circle cx="250" cy="250" r="20" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.35"/>
+                            
+                            <!-- Zodiac division lines (12 houses) - more visible -->
+                            <line x1="250" y1="10" x2="250" y2="490" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                            <line x1="10" y1="250" x2="490" y2="250" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                            
+                            <line x1="70" y1="70" x2="430" y2="430" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                            <line x1="430" y1="70" x2="70" y2="430" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                            
+                            <line x1="250" y1="40" x2="400" y2="130" stroke="#c4a574" stroke-width="0.7" opacity="0.25"/>
+                            <line x1="400" y1="130" x2="460" y2="250" stroke="#c4a574" stroke-width="0.7" opacity="0.25"/>
+                            <line x1="460" y1="250" x2="400" y2="370" stroke="#c4a574" stroke-width="0.7" opacity="0.25"/>
+                            <line x1="400" y1="370" x2="250" y2="460" stroke="#c4a574" stroke-width="0.7" opacity="0.25"/>
+                            
+                            <line x1="250" y1="460" x2="100" y2="370" stroke="#c4a574" stroke-width="0.7" opacity="0.25"/>
+                            <line x1="100" y1="370" x2="40" y2="250" stroke="#c4a574" stroke-width="0.7" opacity="0.25"/>
+                            <line x1="40" y1="250" x2="100" y2="130" stroke="#c4a574" stroke-width="0.7" opacity="0.25"/>
+                            <line x1="100" y1="130" x2="250" y2="40" stroke="#c4a574" stroke-width="0.7" opacity="0.25"/>
+                            
+                            <!-- More organic spiral vortex in center -->
+                            <path d="M 250 250 C 265 245, 275 248, 285 255 C 295 262, 300 275, 298 288 C 296 301, 288 312, 275 318 C 262 324, 245 323, 233 315 C 221 307, 215 292, 217 278 C 219 264, 228 252, 241 247" 
+                                  fill="none" stroke="#c4a574" stroke-width="1.2" opacity="0.4"/>
+                            
+                            <path d="M 250 250 C 260 247, 268 250, 275 256 C 282 262, 285 272, 283 282 C 281 292, 275 300, 265 304 C 255 308, 243 306, 235 299 C 227 292, 223 281, 225 271 C 227 261, 235 253, 244 250" 
+                                  fill="none" stroke="#c4a574" stroke-width="1" opacity="0.35"/>
+                            
+                            <!-- Center point -->
+                            <circle cx="250" cy="250" r="5" fill="#c4a574" opacity="0.4"/>
+                            
+                            <!-- Scattered celestial decorations throughout -->
+                            <text x="240" y="30" font-family="serif" font-size="16" fill="#c4a574" opacity="0.35">✦</text>
+                            <text x="470" y="255" font-family="serif" font-size="14" fill="#c4a574" opacity="0.35">★</text>
+                            <text x="15" y="255" font-family="serif" font-size="14" fill="#c4a574" opacity="0.35">✧</text>
+                            <text x="240" y="480" font-family="serif" font-size="16" fill="#c4a574" opacity="0.35">⋆</text>
+                            
+                            <!-- Additional scattered stars -->
+                            <text x="150" y="80" font-family="serif" font-size="12" fill="#c4a574" opacity="0.3">✦</text>
+                            <text x="350" y="90" font-family="serif" font-size="13" fill="#c4a574" opacity="0.3">★</text>
+                            <text x="100" y="200" font-family="serif" font-size="11" fill="#c4a574" opacity="0.3">⋆</text>
+                            <text x="380" y="180" font-family="serif" font-size="12" fill="#c4a574" opacity="0.3">✧</text>
+                            <text x="140" y="350" font-family="serif" font-size="13" fill="#c4a574" opacity="0.3">★</text>
+                            <text x="370" y="340" font-family="serif" font-size="11" fill="#c4a574" opacity="0.3">✦</text>
+                            <text x="200" y="430" font-family="serif" font-size="12" fill="#c4a574" opacity="0.3">⋆</text>
+                            <text x="310" y="450" font-family="serif" font-size="13" fill="#c4a574" opacity="0.3">✧</text>
+                            
+                            <!-- Moon and sun symbols -->
+                            <text x="100" y="120" font-family="serif" font-size="14" fill="#c4a574" opacity="0.3">☽</text>
+                            <text x="380" y="380" font-family="serif" font-size="14" fill="#c4a574" opacity="0.3">☉</text>
+                            <text x="420" y="140" font-family="serif" font-size="13" fill="#c4a574" opacity="0.3">☽</text>
+                            <text x="80" y="360" font-family="serif" font-size="13" fill="#c4a574" opacity="0.3">☉</text>
+                            
+                            <!-- Small planetary markers - more visible -->
+                            <circle cx="250" cy="60" r="8" fill="none" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                            <circle cx="440" cy="250" r="8" fill="none" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                            <circle cx="250" cy="440" r="8" fill="none" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                            <circle cx="60" cy="250" r="8" fill="none" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                            
+                            <!-- Additional decorative elements -->
+                            <circle cx="180" cy="140" r="4" fill="none" stroke="#c4a574" stroke-width="0.6" opacity="0.25"/>
+                            <circle cx="320" cy="360" r="4" fill="none" stroke="#c4a574" stroke-width="0.6" opacity="0.25"/>
+                            <circle cx="340" cy="160" r="3.5" fill="none" stroke="#c4a574" stroke-width="0.6" opacity="0.25"/>
+                            <circle cx="160" cy="340" r="3.5" fill="none" stroke="#c4a574" stroke-width="0.6" opacity="0.25"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path Section -->
+    <section class="learning-path">
+        <div class="container">
+            <h2 class="section-title">Learning Path</h2>
+            <div class="path-cards">
+                <div class="path-card">
+                    <div class="path-icon">🔓</div>
+                    <div class="path-content">
+                        <div class="level-label">Level 1</div>
+                        <h3>Foundation</h3>
+                        <p class="path-status">Available Now</p>
+                        <p class="path-description">Begin Your Journey Today</p>
+                    </div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon lock-icon">🔒</div>
+                    <div class="path-content">
+                        <div class="level-label">Level 2</div>
+                        <h3>Intermediate</h3>
+                        <p class="path-status">Locked</p>
+                        <p class="path-description">Unlock Next Level by Tutor Approval</p>
+                    </div>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon lock-icon">🔒</div>
+                    <div class="path-content">
+                        <div class="level-label">Level 3</div>
+                        <h3>Advanced</h3>
+                        <p class="path-status">Locked</p>
+                        <p class="path-description">Unlock Next Level by Tutor Approval</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Courses Section -->
+    <section class="featured-courses" id="courses">
+        <div class="container">
+            <h2 class="section-title">Featured Courses</h2>
+            <div class="course-grid">
+                <!-- Level 1 - Available -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <span class="level-badge">Level 1</span>
+                        <div class="course-icon">
+                            <!-- Sun and Moon Icon -->
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="nightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="100" cy="100" r="95" fill="none" stroke="#c4a574" stroke-width="3"/>
+                                <circle cx="100" cy="100" r="90" fill="url(#nightGrad)"/>
+                                <g transform="translate(65, 100)">
+                                    <line x1="0" y1="-25" x2="0" y2="-35" stroke="#f4a460" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="17.7" y1="-17.7" x2="24.7" y2="-24.7" stroke="#f4a460" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="25" y1="0" x2="35" y2="0" stroke="#f4a460" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="17.7" y1="17.7" x2="24.7" y2="24.7" stroke="#f4a460" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="0" y1="25" x2="0" y2="35" stroke="#f4a460" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="-17.7" y1="17.7" x2="-24.7" y2="24.7" stroke="#f4a460" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="-25" y1="0" x2="-35" y2="0" stroke="#f4a460" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="-17.7" y1="-17.7" x2="-24.7" y2="-24.7" stroke="#f4a460" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="0" cy="0" r="18" fill="#f4a460"/>
+                                    <circle cx="-5" cy="-3" r="2" fill="#d4884a"/>
+                                    <circle cx="5" cy="-3" r="2" fill="#d4884a"/>
+                                    <path d="M -6,-2 Q 0,3 6,-2" stroke="#d4884a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                                </g>
+                                <g transform="translate(135, 100)">
+                                    <circle cx="0" cy="0" r="20" fill="#e8e8e8"/>
+                                    <circle cx="5" cy="0" r="18" fill="url(#nightGrad)"/>
+                                    <circle cx="-5" cy="-6" r="3" fill="#d0d0d0" opacity="0.3"/>
+                                    <circle cx="-8" cy="4" r="2" fill="#d0d0d0" opacity="0.3"/>
+                                    <circle cx="-2" cy="8" r="2.5" fill="#d0d0d0" opacity="0.3"/>
+                                </g>
+                                <text x="95" y="35" font-family="serif" font-size="12" fill="#fff" opacity="0.8">✦</text>
+                                <text x="160" y="60" font-family="serif" font-size="10" fill="#fff" opacity="0.6">★</text>
+                                <text x="40" y="70" font-family="serif" font-size="8" fill="#fff" opacity="0.7">⋆</text>
+                                <text x="150" y="140" font-family="serif" font-size="10" fill="#fff" opacity="0.6">✧</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Astrology 101: The Language of the Stars</h3>
+                        <div class="course-meta">
+                            <span class="course-info">4 Classes</span>
+                            <span class="course-price">₹ 4,999</span>
+                        </div>
+                        <a href="course-detail.html" class="btn btn-buy" style="text-decoration: none; display: block; text-align: center;">Buy Now</a>
+                    </div>
+                </div>
+                
+                <!-- Level 2 - Locked -->
+                <div class="course-card locked">
+                    <div class="course-image">
+                        <span class="level-badge">Level 2</span>
+                        <div class="course-icon">
+                            <!-- Zodiac Wheel Icon -->
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="100" cy="100" r="95" fill="none" stroke="#c4a574" stroke-width="2"/>
+                                <circle cx="100" cy="100" r="90" fill="#faf8f6"/>
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#c4a574" stroke-width="1.5" opacity="0.6"/>
+                                <circle cx="100" cy="100" r="65" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.5"/>
+                                <circle cx="100" cy="100" r="50" fill="none" stroke="#c4a574" stroke-width="1.5" opacity="0.6"/>
+                                <circle cx="100" cy="100" r="35" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.5"/>
+                                <circle cx="100" cy="100" r="20" fill="none" stroke="#c4a574" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="100" y1="5" x2="100" y2="195" stroke="#c4a574" stroke-width="1" opacity="0.4"/>
+                                <line x1="5" y1="100" x2="195" y2="100" stroke="#c4a574" stroke-width="1" opacity="0.4"/>
+                                <line x1="29.29" y1="29.29" x2="170.71" y2="170.71" stroke="#c4a574" stroke-width="1" opacity="0.4"/>
+                                <line x1="170.71" y1="29.29" x2="29.29" y2="170.71" stroke="#c4a574" stroke-width="1" opacity="0.4"/>
+                                <line x1="100" y1="20" x2="150" y2="50" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                                <line x1="150" y1="50" x2="180" y2="100" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                                <line x1="180" y1="100" x2="150" y2="150" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                                <line x1="150" y1="150" x2="100" y2="180" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                                <line x1="100" y1="180" x2="50" y2="150" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                                <line x1="50" y1="150" x2="20" y2="100" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                                <line x1="20" y1="100" x2="50" y2="50" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                                <line x1="50" y1="50" x2="100" y2="20" stroke="#c4a574" stroke-width="0.8" opacity="0.3"/>
+                                <circle cx="100" cy="100" r="4" fill="#c4a574" opacity="0.6"/>
+                                <text x="95" y="28" font-family="serif" font-size="10" fill="#c4a574" opacity="0.5">♈</text>
+                                <text x="155" y="60" font-family="serif" font-size="10" fill="#c4a574" opacity="0.5">♊</text>
+                                <text x="168" y="105" font-family="serif" font-size="10" fill="#c4a574" opacity="0.5">♋</text>
+                                <text x="155" y="150" font-family="serif" font-size="10" fill="#c4a574" opacity="0.5">♌</text>
+                                <text x="95" y="178" font-family="serif" font-size="10" fill="#c4a574" opacity="0.5">♎</text>
+                                <text x="35" y="150" font-family="serif" font-size="10" fill="#c4a574" opacity="0.5">♏</text>
+                                <text x="23" y="105" font-family="serif" font-size="10" fill="#c4a574" opacity="0.5">♐</text>
+                                <text x="35" y="60" font-family="serif" font-size="10" fill="#c4a574" opacity="0.5">♒</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>House Systems & Planetary Placements</h3>
+                        <div class="course-meta">
+                            <span class="course-info">6 Classes</span>
+                            <span class="course-price">₹ 4,999</span>
+                        </div>
+                        <span class="tutor-approval-badge">🎓 Complete Level 1 First</span>
+                        <button class="btn btn-buy disabled" disabled>Locked</button>
+                    </div>
+                </div>
+                
+                <!-- Level 3 - Locked -->
+                <div class="course-card locked">
+                    <div class="course-image">
+                        <span class="level-badge">Level 3</span>
+                        <div class="course-icon">
+                            <!-- Locked Book Icon -->
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+                                    </linearGradient>
+                                    <filter id="shadow">
+                                        <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.5"/>
+                                    </filter>
+                                </defs>
+                                <rect x="50" y="40" width="100" height="130" rx="8" fill="url(#bookGrad)" filter="url(#shadow)"/>
+                                <rect x="50" y="40" width="10" height="130" rx="8" fill="#654321" opacity="0.5"/>
+                                <rect x="60" y="50" width="80" height="110" rx="4" fill="none" stroke="#c4a574" stroke-width="2" opacity="0.6"/>
+                                <rect x="65" y="55" width="70" height="100" rx="3" fill="none" stroke="#c4a574" stroke-width="1" opacity="0.4"/>
+                                <circle cx="70" cy="60" r="3" fill="#c4a574" opacity="0.5"/>
+                                <circle cx="130" cy="60" r="3" fill="#c4a574" opacity="0.5"/>
+                                <circle cx="70" cy="150" r="3" fill="#c4a574" opacity="0.5"/>
+                                <circle cx="130" cy="150" r="3" fill="#c4a574" opacity="0.5"/>
+                                <g transform="translate(100, 105)">
+                                    <rect x="-15" y="0" width="30" height="25" rx="3" fill="#d4a574"/>
+                                    <rect x="-12" y="2" width="24" height="21" rx="2" fill="#c4a574"/>
+                                    <circle cx="0" cy="10" r="4" fill="#654321"/>
+                                    <rect x="-1.5" y="10" width="3" height="8" fill="#654321"/>
+                                    <path d="M -10,-5 Q -10,-20 0,-20 Q 10,-20 10,-5" fill="none" stroke="#c4a574" stroke-width="5" stroke-linecap="round"/>
+                                    <path d="M -10,-5 Q -10,-20 0,-20 Q 10,-20 10,-5" fill="none" stroke="#d4a574" stroke-width="3" stroke-linecap="round"/>
+                                </g>
+                                <rect x="145" y="43" width="3" height="124" fill="#fff" opacity="0.3"/>
+                                <rect x="147" y="45" width="2" height="120" fill="#fff" opacity="0.2"/>
+                                <text x="95" y="75" font-family="serif" font-size="10" fill="#c4a574" opacity="0.4">✦</text>
+                                <text x="72" y="140" font-family="serif" font-size="8" fill="#c4a574" opacity="0.4">★</text>
+                                <text x="120" y="140" font-family="serif" font-size="8" fill="#c4a574" opacity="0.4">⋆</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Advanced Predictive Techniques</h3>
+                        <div class="course-meta">
+                            <span class="course-info">8 Classes</span>
+                            <span class="course-price">₹ 6,999</span>
+                        </div>
+                        <span class="tutor-approval-badge">🎓 Complete Level 2 First</span>
+                        <button class="btn btn-buy disabled" disabled>Locked</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">📚</div>
+                    <h3><span class="step-number">1.</span>Start Foundation</h3>
+                    <p>Begin with Level 1 and master the fundamentals of astrology</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">👨‍🏫</div>
+                    <h3><span class="step-number">2.</span>Learn with Tutor</h3>
+                    <p>Get personalized guidance from experienced astrology teachers</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🔓</div>
+                    <h3><span class="step-number">3.</span>Unlock Levels</h3>
+                    <p>Progress through levels with tutor approvals as you advance</p>
+                </div>
+            </div>
+            <p class="journey-tagline">Your journey through the cosmos, guided by experts.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Students Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            The personalized guidance I received was incredible. The tutor-approval system ensures 
+                            you're truly ready before advancing. Best astrology course I've taken!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">P</div>
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>Level 2 Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            From complete beginner to confident chart reader in just 6 months. The structured 
+                            progression and expert teaching made all the difference.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">R</div>
+                            <div class="author-info">
+                                <h4>Rajesh Kumar</h4>
+                                <p>Level 3 Graduate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            The customer support is amazing! They answered all my questions promptly and helped 
+                            me choose the right course for my goals. Highly recommend!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">A</div>
+                            <div class="author-info">
+                                <h4>Ananya Patel</h4>
+                                <p>Level 1 Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="instructor-section" id="about">
+        <div class="container">
+            <div class="instructor-content">
+                <div class="instructor-text">
+                    <h2>Learn from Experienced Astrologer Guiding Your Path</h2>
+                    <p>Benefit from 15+ years of astrology teaching experience</p>
+                    <p>Personal guidance to master the celestial language of the stars.</p>
+                    <div class="instructor-buttons">
+                        <a href="all-courses.html" class="btn btn-primary">⭐ Buy Now</a>
+                        <a href="/cdn-cgi/l/email-protection#bfdcd0d1cbdedccbffd5d0c6d7d0d1dac691d6d1" class="btn btn-contact">📧 <span class="__cf_email__" data-cfemail="4f2c20213b2e2c3b0f2520362720212a36612621">[email&#160;protected]</span></a>
+                    </div>
+                </div>
+                <div class="instructor-image">
+                    <!-- TO ADD YOUR TUTOR PHOTO: -->
+                    <!-- 1. Uncomment the line below -->
+                    <!-- 2. Replace 'your-tutor-photo.jpg' with your actual image path -->
+                    <!-- 3. Delete the placeholder div below -->
+                    
+                    <!-- <img src="images/your-tutor-photo.jpg" alt="Astrology Tutor"> -->
+                    
+                    <!-- PLACEHOLDER - Remove this when you add real image -->
+                    <div class="instructor-placeholder">
+                        <p style="color: var(--medium-text); font-size: 18px; text-align: center; padding: 20px;">Add your tutor's photo here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <!-- Newsletter Section -->
+                <div class="newsletter-section">
+                    <div class="newsletter-content">
+                        <h3>✨ Subscribe to Our Cosmic Newsletter</h3>
+                        <p>Get weekly astrology insights, course updates, and celestial guidance delivered to your inbox.</p>
+                        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                            <button type="submit" class="newsletter-btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="footer-content">
+                    <!-- Brand Section -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="logo-icon">✨</div>
+                            <span class="footer-logo-text">Joyhoney Academy</span>
+                        </div>
+                        <p class="footer-description">Join our growing community of astrology learners and explore the wisdom of the stars with us.</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                            <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+                            <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+                            <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Useful Links -->
+                    <div class="footer-column">
+                        <h3>Useful Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="about-tutor.html">About Us</a></li>
+                            <li><a href="#privacy">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Our Company -->
+                    <div class="footer-column">
+                        <h3>Our Company</h3>
+                        <ul class="footer-links">
+                            <li><a href="#instructor">Instructor</a></li>
+                            <li><a href="#events">Events</a></li>
+                            <li><a href="#courses">Course</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Get Contact -->
+                    <div class="footer-column">
+                        <h3>Get Contact</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <strong>Phone:</strong>
+                                <a href="tel:+919876543210">+91 98765 43210</a>
+                            </li>
+                            <li>
+                                <strong>E-mail:</strong>
+                                <a href="/cdn-cgi/l/email-protection#24474b4a50454750644e4b5d4c4b4a415d0a4d4a"><span class="__cf_email__" data-cfemail="e0838f8e94818394a08a8f99888f8e8599ce898e">[email&#160;protected]</span></a>
+                            </li>
+                            <li>
+                                <strong>Address:</strong>
+                                123 Cosmic Lane, Starlight District, Mumbai, India
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p class="copyright">Copyright © 2025 Joyhoney Academy. All rights reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#terms">Terms of service</a></li>
+                        <li><a href="#privacy">Privacy policy</a></li>
+                        <li><a href="#login">Login & Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top B
