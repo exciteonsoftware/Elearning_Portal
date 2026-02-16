@@ -10,59 +10,72 @@
         :root { --cream: #f5f1ed; --warm-white: #faf8f6; --gold: #c4a574; --gold-dark: #9d7d4f; --dark-text: #5c4a3a; --medium-text: #6b5d52; }
         body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--dark-text); overflow-x: hidden; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        
+        /* Header */
         header { background: var(--warm-white); padding: 15px 0; box-shadow: 0 2px 20px rgba(74,63,53,0.05); position: sticky; top: 0; z-index: 100; }
-        nav { display: flex; justify-content: space-between; align-items: center; position: relative; }
-        .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--dark-text); text-decoration: none; z-index: 102; position: relative; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--dark-text); text-decoration: none; z-index: 102; }
         .logo-icon { width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 102; position: relative; }
+        
+        /* Hamburger */
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 102; }
         .hamburger span { width: 25px; height: 3px; background: var(--dark-text); border-radius: 3px; transition: all 0.3s; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(7px,7px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px,-7px); }
+        
+        /* Navigation */
         .nav-links { display: flex; gap: 35px; align-items: center; list-style: none; }
-        .nav-links a { color: var(--medium-text); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; padding: 8px 0; }
+        .nav-links a { color: var(--medium-text); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: var(--gold-dark); }
+        
+        /* Hero */
         .hero { padding: 60px 0; background: var(--warm-white); }
         .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .hero-text h1 { font-family: 'Crimson Text',serif; font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
-        .hero-text p { font-size: 18px; color: var(--medium-text); margin-bottom: 30px; }
+        .hero-text h1 { font-family: 'Crimson Text',serif; font-size: 48px; margin-bottom: 20px; color: var(--dark-text); line-height: 1.2; }
+        .hero-text p { font-size: 18px; color: var(--medium-text); margin-bottom: 30px; line-height: 1.7; }
         .hero-buttons { display: flex; gap: 15px; }
         .btn { padding: 15px 35px; background: var(--gold); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block; transition: all 0.3s; }
         .btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
         .btn-secondary { background: white; color: var(--dark-text); border: 2px solid var(--gold); }
-        .hero-illustration { width: 100%; height: 400px; background: linear-gradient(135deg,#d4b994,var(--gold)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 120px; }
+        .hero-illustration { width: 100%; height: 400px; background: linear-gradient(135deg,#d4b994,var(--gold)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 120px; box-shadow: 0 20px 60px rgba(196,165,116,0.3); }
+        
+        /* Sections */
         .section { padding: 80px 0; }
-        .section-title { font-family: 'Crimson Text',serif; font-size: 42px; text-align: center; margin-bottom: 50px; }
+        .section-title { font-family: 'Crimson Text',serif; font-size: 42px; text-align: center; margin-bottom: 50px; color: var(--dark-text); }
         .cards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
-        .card { background: white; padding: 40px 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(74,63,53,0.08); text-align: center; transition: transform 0.3s; }
+        .card { background: white; padding: 40px 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(74,63,53,0.08); transition: transform 0.3s; text-align: center; }
         .card:hover { transform: translateY(-10px); }
         .card-icon { width: 80px; height: 80px; background: linear-gradient(135deg,#d4b994,var(--gold)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 25px; }
-        .card h3 { font-family: 'Crimson Text',serif; font-size: 26px; margin-bottom: 15px; }
+        .card h3 { font-family: 'Crimson Text',serif; font-size: 26px; margin-bottom: 15px; color: var(--dark-text); }
         .card p { font-size: 15px; color: var(--medium-text); line-height: 1.6; }
+        
+        /* Footer */
         footer { background: var(--dark-text); color: white; padding: 40px 0; text-align: center; }
         
+        /* MOBILE RESPONSIVE */
         @media (max-width: 968px) {
             .container { padding: 0 20px !important; }
             .hamburger { display: flex; }
             .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--warm-white); flex-direction: column; padding: 100px 30px 30px; gap: 0; box-shadow: -5px 0 20px rgba(0,0,0,0.15); transition: right 0.3s; z-index: 101; overflow-y: auto; }
             .nav-links.active { right: 0; }
             .nav-links li { width: 100%; border-bottom: 1px solid rgba(196,165,116,0.2); }
-            .nav-links a { padding: 18px 0 !important; font-size: 16px !important; width: 100%; display: block; }
+            .nav-links a { padding: 18px 0; font-size: 16px; display: block; }
             .hero { padding: 40px 0; }
-            .hero-content { grid-template-columns: 1fr !important; }
-            .hero-text h1 { font-size: 32px !important; }
-            .hero-text p { font-size: 16px !important; }
-            .hero-buttons { flex-direction: column !important; }
-            .btn { width: 100% !important; text-align: center; }
+            .hero-content { grid-template-columns: 1fr; gap: 30px; }
+            .hero-text h1 { font-size: 32px; }
+            .hero-text p { font-size: 16px; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
             .hero-illustration { height: 300px; font-size: 80px; }
-            .section { padding: 50px 0 !important; }
-            .section-title { font-size: 32px !important; }
-            .cards-grid { grid-template-columns: 1fr !important; }
+            .section { padding: 50px 0; }
+            .section-title { font-size: 32px; }
+            .cards-grid { grid-template-columns: 1fr; gap: 20px; }
         }
         @media (max-width: 480px) {
-            .logo { font-size: 18px !important; }
-            .logo-icon { width: 35px !important; height: 35px !important; }
-            .hero-text h1 { font-size: 28px !important; }
+            .logo { font-size: 18px; }
+            .logo-icon { width: 35px; height: 35px; }
+            .hero-text h1 { font-size: 28px; }
         }
     </style>
 </head>
@@ -74,9 +87,7 @@
                 Joyhoney Academy
             </a>
             <button class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
@@ -161,33 +172,9 @@
     </footer>
 
     <script>
-        function toggleMenu() {
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.getElementById('navLinks');
-            const body = document.body;
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-        }
-        document.addEventListener('click', function(event) {
-            const nav = document.querySelector('nav');
-            const navLinks = document.getElementById('navLinks');
-            const hamburger = document.querySelector('.hamburger');
-            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                const hamburger = document.querySelector('.hamburger');
-                const navLinks = document.getElementById('navLinks');
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+        function toggleMenu(){const h=document.querySelector('.hamburger'),n=document.getElementById('navLinks'),b=document.body;h.classList.toggle('active');n.classList.toggle('active');b.style.overflow=n.classList.contains('active')?'hidden':'';}
+        document.addEventListener('click',e=>{const nav=document.querySelector('nav'),n=document.getElementById('navLinks'),h=document.querySelector('.hamburger');if(!nav.contains(e.target)&&n.classList.contains('active')){h.classList.remove('active');n.classList.remove('active');document.body.style.overflow='';}});
+        document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click',()=>{const h=document.querySelector('.hamburger'),n=document.getElementById('navLinks');h.classList.remove('active');n.classList.remove('active');document.body.style.overflow='';}));
     </script>
 </body>
 </html>
