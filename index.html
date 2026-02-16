@@ -1352,6 +1352,7 @@ svg { max-width:100%; }
 </style>
 </head>
 <body>
+    <div class="menu-overlay" onclick="closeMenu()"></div>
     <!-- Header -->
     <header>
         <nav class="container">
@@ -1359,7 +1360,8 @@ svg { max-width:100%; }
                 <div class="logo-icon">✨</div>
                 Joyhoney Academy
             </a>
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="menu-toggle" onclick="openMenu()">☰</div>
+
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="all-courses.html">Courses</a></li>
@@ -1900,43 +1902,80 @@ svg { max-width:100%; }
     }
     });
     </script>
+    <script>
+        function openMenu(){
+        document.querySelector('.nav-links').classList.add('active');
+        document.querySelector('.menu-overlay').classList.add('active');
+        }
+        
+        function closeMenu(){
+        document.querySelector('.nav-links').classList.remove('active');
+        document.querySelector('.menu-overlay').classList.remove('active');
+        }
+        </script>
 <style>
 
-    /* ================= HAMBURGER MENU ================= */
-/* Hide hamburger by default */
-.menu-toggle{
-display:none !important;
-}
-
-/* Show hamburger ONLY on mobile */
-@media (max-width: 768px){
+  /* ================= RIGHT DRAWER MOBILE MENU ================= */
 
 .menu-toggle{
-display:block !important;
+display:none;
 font-size:28px;
 cursor:pointer;
-padding:6px 10px;
+margin-left:auto;
+}
+
+/* Overlay */
+.menu-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.4);
+z-index:998;
+}
+
+/* Drawer */
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
 }
 
 .nav-links{
-display:none;
-flex-direction:column;
+position:fixed;
+top:0;
+right:-260px;
+height:100%;
+width:260px;
 background:white;
-padding:18px;
-border-radius:14px;
-box-shadow:0 12px 30px rgba(0,0,0,.12);
-position:absolute;
-right:20px;
-top:70px;
-width:220px;
+flex-direction:column;
+padding:80px 25px;
+gap:18px;
+box-shadow:-5px 0 25px rgba(0,0,0,.15);
+transition:.3s ease;
 z-index:999;
 }
 
 .nav-links.active{
-display:flex;
+right:0;
+}
+
+.menu-overlay.active{
+display:block;
+}
+
+.nav-links li{
+margin:0;
+}
+
+.nav-links a{
+font-size:16px;
 }
 
 }
+
 
 
 </style>    
