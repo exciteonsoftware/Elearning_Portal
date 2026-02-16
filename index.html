@@ -3,65 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyhoney Academy</title>
+    <title>Joyhoney Academy - Astrology Learning Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--cream:#f5f1ed;--warm-white:#faf8f6;--gold:#c4a574;--gold-dark:#9d7d4f;--dark-text:#5c4a3a;--medium-text:#6b5d52}
-        body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--dark-text);overflow-x:hidden}
-        .container{max-width:1200px;margin:0 auto;padding:0 40px}
-        header{background:var(--warm-white);padding:15px 0;box-shadow:0 2px 20px rgba(74,63,53,0.05);position:sticky;top:0;z-index:100}
-        nav{display:flex;justify-content:space-between;align-items:center}
-        .logo{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:700;color:var(--dark-text);text-decoration:none;z-index:102}
-        .logo-icon{width:40px;height:40px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
-        .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:102}
-        .hamburger span{width:25px;height:3px;background:var(--dark-text);border-radius:3px;transition:all .3s}
-        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(7px,7px)}
-        .hamburger.active span:nth-child(2){opacity:0}
-        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
-        .nav-links{display:flex;gap:35px;align-items:center;list-style:none}
-        .nav-links a{color:var(--medium-text);text-decoration:none;font-size:15px;font-weight:500;transition:color .3s}
-        .nav-links a:hover{color:var(--gold-dark)}
-        .hero{padding:60px 0;background:var(--warm-white)}
-        .hero-content{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-        .hero-text h1{font-family:'Crimson Text',serif;font-size:48px;margin-bottom:20px;line-height:1.2}
-        .hero-text p{font-size:18px;color:var(--medium-text);margin-bottom:30px}
-        .hero-buttons{display:flex;gap:15px}
-        .btn{padding:15px 35px;background:var(--gold);color:white;text-decoration:none;border-radius:8px;font-weight:600;display:inline-block;transition:all .3s}
-        .btn:hover{background:var(--gold-dark)}
-        .btn-secondary{background:white;color:var(--dark-text);border:2px solid var(--gold)}
-        .hero-illustration{width:100%;height:400px;background:linear-gradient(135deg,#d4b994,var(--gold));border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:120px}
-        .section{padding:80px 0}
-        .section-title{font-family:'Crimson Text',serif;font-size:42px;text-align:center;margin-bottom:50px}
-        .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-        .card{background:white;padding:40px 30px;border-radius:15px;box-shadow:0 10px 30px rgba(74,63,53,0.08);text-align:center}
-        .card-icon{width:80px;height:80px;background:linear-gradient(135deg,#d4b994,var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 25px}
-        .card h3{font-family:'Crimson Text',serif;font-size:26px;margin-bottom:15px}
-        footer{background:var(--dark-text);color:white;padding:40px 0;text-align:center}
-        @media (max-width:968px){
-            .container{padding:0 20px!important}
-            .hamburger{display:flex}
-            .nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--warm-white);flex-direction:column;padding:100px 30px 30px;gap:0;box-shadow:-5px 0 20px rgba(0,0,0,.15);transition:right .3s;z-index:101}
-            .nav-links.active{right:0}
-            .nav-links li{width:100%;border-bottom:1px solid rgba(196,165,116,.2)}
-            .nav-links a{padding:18px 0!important;font-size:16px!important;display:block}
-            .hero{padding:40px 0}
-            .hero-content{grid-template-columns:1fr!important}
-            .hero-text h1{font-size:32px!important}
-            .hero-buttons{flex-direction:column!important}
-            .btn{width:100%!important;text-align:center}
-            .hero-illustration{height:300px;font-size:80px}
-            .section{padding:50px 0!important}
-            .section-title{font-size:32px!important}
-            .cards-grid{grid-template-columns:1fr!important}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --cream: #f5f1ed; --warm-white: #faf8f6; --gold: #c4a574; --gold-dark: #9d7d4f; --dark-text: #5c4a3a; --medium-text: #6b5d52; }
+        body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--dark-text); overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        header { background: var(--warm-white); padding: 15px 0; box-shadow: 0 2px 20px rgba(74,63,53,0.05); position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--dark-text); text-decoration: none; z-index: 102; position: relative; }
+        .logo-icon { width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 102; position: relative; }
+        .hamburger span { width: 25px; height: 3px; background: var(--dark-text); border-radius: 3px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(7px,7px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px,-7px); }
+        .nav-links { display: flex; gap: 35px; align-items: center; list-style: none; }
+        .nav-links a { color: var(--medium-text); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; padding: 8px 0; }
+        .nav-links a:hover { color: var(--gold-dark); }
+        .hero { padding: 60px 0; background: var(--warm-white); }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .hero-text h1 { font-family: 'Crimson Text',serif; font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
+        .hero-text p { font-size: 18px; color: var(--medium-text); margin-bottom: 30px; }
+        .hero-buttons { display: flex; gap: 15px; }
+        .btn { padding: 15px 35px; background: var(--gold); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block; transition: all 0.3s; }
+        .btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
+        .btn-secondary { background: white; color: var(--dark-text); border: 2px solid var(--gold); }
+        .hero-illustration { width: 100%; height: 400px; background: linear-gradient(135deg,#d4b994,var(--gold)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 120px; }
+        .section { padding: 80px 0; }
+        .section-title { font-family: 'Crimson Text',serif; font-size: 42px; text-align: center; margin-bottom: 50px; }
+        .cards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
+        .card { background: white; padding: 40px 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(74,63,53,0.08); text-align: center; transition: transform 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card-icon { width: 80px; height: 80px; background: linear-gradient(135deg,#d4b994,var(--gold)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 25px; }
+        .card h3 { font-family: 'Crimson Text',serif; font-size: 26px; margin-bottom: 15px; }
+        .card p { font-size: 15px; color: var(--medium-text); line-height: 1.6; }
+        footer { background: var(--dark-text); color: white; padding: 40px 0; text-align: center; }
+        
+        @media (max-width: 968px) {
+            .container { padding: 0 20px !important; }
+            .hamburger { display: flex; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--warm-white); flex-direction: column; padding: 100px 30px 30px; gap: 0; box-shadow: -5px 0 20px rgba(0,0,0,0.15); transition: right 0.3s; z-index: 101; overflow-y: auto; }
+            .nav-links.active { right: 0; }
+            .nav-links li { width: 100%; border-bottom: 1px solid rgba(196,165,116,0.2); }
+            .nav-links a { padding: 18px 0 !important; font-size: 16px !important; width: 100%; display: block; }
+            .hero { padding: 40px 0; }
+            .hero-content { grid-template-columns: 1fr !important; }
+            .hero-text h1 { font-size: 32px !important; }
+            .hero-text p { font-size: 16px !important; }
+            .hero-buttons { flex-direction: column !important; }
+            .btn { width: 100% !important; text-align: center; }
+            .hero-illustration { height: 300px; font-size: 80px; }
+            .section { padding: 50px 0 !important; }
+            .section-title { font-size: 32px !important; }
+            .cards-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+            .logo { font-size: 18px !important; }
+            .logo-icon { width: 35px !important; height: 35px !important; }
+            .hero-text h1 { font-size: 28px !important; }
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <a href="index.html" class="logo"><div class="logo-icon">✨</div>Joyhoney Academy</a>
-            <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">✨</div>
+                Joyhoney Academy
+            </a>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="all-courses.html">Courses</a></li>
@@ -72,12 +88,13 @@
             </ul>
         </nav>
     </header>
+
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Learn Astrology Step-by-Step with Personal Tutor Guidance</h1>
-                    <p>Start your journey into the world of astrology with our 3-level program.</p>
+                    <p>Start your journey into the world of astrology with our 3-level program. Join Level 1 foundation classes today.</p>
                     <div class="hero-buttons">
                         <a href="all-courses.html" class="btn">Explore Courses →</a>
                         <a href="#" class="btn btn-secondary">Watch Intro</a>
@@ -87,21 +104,90 @@
             </div>
         </div>
     </section>
+
     <section class="section">
         <div class="container">
             <h2 class="section-title">Learning Path</h2>
             <div class="cards-grid">
-                <div class="card"><div class="card-icon">🔓</div><h3>Level 1</h3><p>Foundation</p></div>
-                <div class="card"><div class="card-icon">🔒</div><h3>Level 2</h3><p>Intermediate</p></div>
-                <div class="card"><div class="card-icon">🔒</div><h3>Level 3</h3><p>Advanced</p></div>
+                <div class="card">
+                    <div class="card-icon">🔓</div>
+                    <h3>Level 1: Foundation</h3>
+                    <p>Available Now - Begin Your Journey Today</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Level 2: Intermediate</h3>
+                    <p>Locked - Unlock with Tutor Approval</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Level 3: Advanced</h3>
+                    <p>Locked - Unlock with Tutor Approval</p>
+                </div>
             </div>
         </div>
     </section>
-    <footer><div class="container"><p>© 2026 Joyhoney Academy</p></div></footer>
+
+    <section class="section" style="background:white;">
+        <div class="container">
+            <h2 class="section-title">Featured Courses</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🌌</div>
+                    <h3>Astrology 101</h3>
+                    <p>Learn fundamental principles of astrology</p>
+                    <p style="margin-top:15px;font-size:20px;font-weight:700;color:var(--gold-dark);">₹4,999</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔮</div>
+                    <h3>Birth Charts</h3>
+                    <p>Master reading and interpreting charts</p>
+                    <p style="margin-top:15px;font-size:20px;font-weight:700;color:var(--gold-dark);">₹4,999</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌠</div>
+                    <h3>Planets & Meanings</h3>
+                    <p>Deep dive into planetary energies</p>
+                    <p style="margin-top:15px;font-size:20px;font-weight:700;color:var(--gold-dark);">₹4,999</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Joyhoney Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
-        function toggleMenu(){const h=document.querySelector('.hamburger'),n=document.getElementById('navLinks'),b=document.body;h.classList.toggle('active');n.classList.toggle('active');b.style.overflow=n.classList.contains('active')?'hidden':'';}
-        document.addEventListener('click',e=>{const nav=document.querySelector('nav'),n=document.getElementById('navLinks'),h=document.querySelector('.hamburger');if(!nav.contains(e.target)&&n.classList.contains('active')){h.classList.remove('active');n.classList.remove('active');document.body.style.overflow='';}});
-        document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click',()=>{const h=document.querySelector('.hamburger'),n=document.getElementById('navLinks');h.classList.remove('active');n.classList.remove('active');document.body.style.overflow='';}));
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.getElementById('navLinks');
+            const body = document.body;
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                const hamburger = document.querySelector('.hamburger');
+                const navLinks = document.getElementById('navLinks');
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
     </script>
 </body>
 </html>
