@@ -77,7 +77,7 @@
             box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1500;
         }
         
         nav {
@@ -859,6 +859,35 @@
                 justify-content: center;
             }
         }
+
+        /* ===== HAMBURGER MENU ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px 10px;
+            color: var(--dark-text);
+            z-index: 102;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links { position: fixed; top: 0; right: -280px; height: 100vh; width: 280px; background: var(--warm-white); flex-direction: column; padding: 80px 25px 30px; gap: 0; box-shadow: -5px 0 25px rgba(0,0,0,.15); transition: right .3s ease; z-index: 999; overflow-y: auto; }
+            .nav-links.active { right: 0; }
+            .nav-links li { width: 100%; border-bottom: 1px solid rgba(196,165,116,0.2); }
+            .nav-links a { display: block; width: 100%; padding: 16px 0; font-size: 16px; }
+            .hero-title { font-size: 32px !important; }
+            .contact-form-section { grid-template-columns: 1fr !important; }
+            .contact-cards { grid-template-columns: 1fr !important; }
+            .social-grid { grid-template-columns: 1fr 1fr !important; }
+            .footer-content { grid-template-columns: 1fr !important; }
+            .footer-bottom-content { flex-direction: column !important; text-align: center; gap: 15px; }
+            .footer-bottom-links { justify-content: center; flex-wrap: wrap; }
+            .newsletter-form { flex-direction: column !important; }
+            .newsletter-btn { width: 100% !important; }
+        }
     </style>
 </head>
 <body>
@@ -869,6 +898,8 @@
                 <div class="logo-icon">✨</div>
                 Joyhoney Academy
             </a>
+            
+            <button class="menu-toggle" onclick="openMenu()">☰</button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="all-courses.html">Courses</a></li>
