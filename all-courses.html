@@ -78,7 +78,7 @@
             box-shadow: 0 2px 20px rgba(74, 63, 53, 0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1500;
         }
         
         nav {
@@ -1026,67 +1026,51 @@
         /* ===== MOBILE RIGHT DRAWER MENU ===== */
 
 .menu-toggle{
-display:none;
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    padding:6px 10px;
+    color:var(--dark-text);
 }
 
 @media(max-width:768px){
+    .menu-toggle{ display:block; }
 
-.menu-toggle{
-display:block;
-position:fixed;
-top:18px;
-right:18px;
-z-index:1100;
-font-size:28px;
-cursor:pointer;
-background:white;
-padding:6px 10px;
-border-radius:8px;
-box-shadow:0 4px 12px rgba(0,0,0,.15);
-}
+    .nav-links{
+        position:fixed;
+        top:0;
+        right:-280px;
+        height:100vh;
+        width:280px;
+        background:var(--warm-white);
+        flex-direction:column;
+        padding:80px 25px 30px;
+        gap:0;
+        box-shadow:-5px 0 25px rgba(0,0,0,.15);
+        transition:right .3s ease;
+        z-index:999;
+        overflow-y:auto;
+    }
 
-.menu-overlay{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.4);
-z-index:900;
-}
+    .nav-links.active{ right:0; }
 
-.menu-overlay.active{
-display:block;
-}
+    .nav-links li{
+        width:100%;
+        border-bottom:1px solid rgba(196,165,116,0.2);
+    }
 
-.nav-links{
-position:fixed;
-top:0;
-right:-260px;
-height:100%;
-width:260px;
-background:white;
-flex-direction:column;
-padding:80px 25px;
-gap:18px;
-box-shadow:-5px 0 25px rgba(0,0,0,.15);
-transition:.3s ease;
-z-index:1000;
-}
+    .nav-links a{
+        display:block;
+        width:100%;
+        padding:16px 0;
+        font-size:16px;
+        color:#6b5d52;
+        text-decoration:none;
+    }
 
-.nav-links.active{
-right:0;
-}
-
-.nav-links li{width:100%}
-
-.nav-links a{
-display:block;
-width:100%;
-padding:10px 0;
-}
-
+    .nav-links a:hover{ color:#9d7d4f; }
 }
 
 /* ===== FORCE FOOTER MOBILE FIX ===== */
@@ -1111,12 +1095,40 @@ flex-wrap:wrap;
 
 }
 
+
+        /* ===== ADDITIONAL MOBILE FIXES ===== */
+        @media (max-width: 968px) {
+            .container { padding: 0 20px !important; }
+
+            /* Course grid: 3 cols -> 1 col */
+            .course-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+
+            /* Controls bar: stack vertically */
+            .controls-bar { flex-direction: column !important; align-items: stretch !important; }
+            .controls-left { flex-direction: column !important; align-items: stretch !important; }
+            .controls-right { flex-direction: column !important; align-items: stretch !important; }
+
+            /* Search input full width */
+            .search-input { width: 100% !important; }
+            .search-box { width: 100% !important; }
+            .sort-dropdown { width: 100% !important; }
+            .filter-btn { width: 100% !important; justify-content: center; }
+
+            /* Page title row wrap */
+            .page-title-row { flex-wrap: wrap; }
+            .page-header h1 { font-size: 30px !important; }
+
+            /* Newsletter form stack */
+            .newsletter-form { flex-direction: column !important; }
+            .newsletter-btn { width: 100% !important; }
+
+            /* Section header */
+            .section-header h2 { font-size: 20px !important; }
+        }
     </style>
 </head>
-<<body>
+<body>
 
-    <div class="menu-overlay" onclick="closeMenu()"></div>
-    
     <header>
         <nav class="container">
             <a href="index.html" class="logo">
@@ -1127,7 +1139,12 @@ flex-wrap:wrap;
             <div class="menu-toggle" onclick="openMenu()">☰</div>
     
             <ul class="nav-links">
-                ...
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-courses.html">Courses</a></li>
+                <li><a href="about-tutor.html">About Tutor</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -1454,7 +1471,7 @@ flex-wrap:wrap;
     <footer>
         <div class="footer-main">
             <div class="container">
-                <!-- Newsletter Section -->
+                <!-- Newsletter Section 123-->
                 <div class="newsletter-section">
                     <div class="newsletter-content">
                         <h3>✨ Subscribe to Our Cosmic Newsletter</h3>
@@ -1550,15 +1567,26 @@ flex-wrap:wrap;
 </div>
 <script>
     function openMenu(){
-    document.querySelector('.nav-links').classList.add('active');
-    document.querySelector('.menu-overlay').classList.add('active');
+        document.querySelector('.nav-links').classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-    
     function closeMenu(){
-    document.querySelector('.nav-links').classList.remove('active');
-    document.querySelector('.menu-overlay').classList.remove('active');
+        document.querySelector('.nav-links').classList.remove('active');
+        document.body.style.overflow = '';
     }
-    </script>
+    // Close when clicking outside
+    document.addEventListener('click', function(e){
+        var nav = document.querySelector('.nav-links');
+        var toggle = document.querySelector('.menu-toggle');
+        if(nav.classList.contains('active') && !nav.contains(e.target) && !toggle.contains(e.target)){
+            closeMenu();
+        }
+    });
+    // Close when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(function(link){
+        link.addEventListener('click', closeMenu);
+    });
+</script>
     
 </body>
 </html>
